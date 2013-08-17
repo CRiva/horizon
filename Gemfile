@@ -24,8 +24,9 @@ group :development do
   gem 'quiet_assets'
 end
 group :development, :test do
-  gem 'unicorn'
+  gem 'thin'
 end
 group :production do
-  gem 'thin'
+  gem 'unicorn'
+
 end
