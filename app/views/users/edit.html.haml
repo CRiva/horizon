@@ -1,0 +1,5 @@
+%h4= @user.email
+- @user.roles.each do |role|
+  %i.icon-ok
+  = role.name
+= @user.role_ids

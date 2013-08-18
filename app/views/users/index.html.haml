@@ -1,5 +1,5 @@
 - @users.each do |user|
   %li= user.email
-  = link_to "Change Roles", edit_role_path(user.roles)
+  = link_to "Change Roles", edit_user_path(user)
   - user.roles.each do |role|
     = role.name

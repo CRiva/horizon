@@ -1,0 +1,5 @@
+reminder: left off on admin panel when got confused with select boxes.
+ need tool for assigning roles
+
+-- add name to user and avatars
+-- add sections with colors

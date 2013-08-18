@@ -1,4 +1,9 @@
-%h3= link_to article.title, article
-%p= article.body
-.pull-right=  article.comments.length.to_s + " comments"
+.row
+  - if article.photo.to_s != "/photos/original/missing.png"
+    .span2= image_tag article.photo.url(:thumb), style:"Float:left; padding:10px;"
+
+  .span8
+    %h3= link_to article.title, article
+    %p= article.body
+    .pull-right=  article.comments.length.to_s + " comments"
 %hr
