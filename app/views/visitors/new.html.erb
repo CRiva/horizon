@@ -1,0 +1,6 @@
+<h1> This is the Horizon, </h1>
+<lead>Finest news source this side of Montecito </lead>
+<%= link_to "User Roles", roles_path %>
+<% @articles.each do |article| %>
+  <%= render article, article: article %>
+<% end %>

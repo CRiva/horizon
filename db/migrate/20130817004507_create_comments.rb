@@ -8,6 +8,6 @@ class CreateComments < ActiveRecord::Migration
     end
   end
   def self.down
-    remove_table :commnts
+    drop_table :commnts
   end
 end

@@ -13,6 +13,8 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form', '>= 3.0.0.rc'
+gem 'devise', '3.0.0.rc'
+gem 'cancan'
 group :assets do
   gem 'therubyracer', :platform=>:ruby
 end
