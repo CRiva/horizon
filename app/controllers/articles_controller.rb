@@ -5,7 +5,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(2)
+
+    respond_to do |format|
+      format.html # index.hmtl.haml
+      format.xml { render xml: @articles }
+    end
   end
 
   # GET /articles/1
