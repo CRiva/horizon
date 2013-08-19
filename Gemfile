@@ -16,6 +16,7 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'devise', '3.0.0.rc'
 gem 'cancan'
 gem 'paperclip', "~> 3.0"
+gem 'kaminari'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby

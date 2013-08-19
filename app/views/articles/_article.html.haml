@@ -1,9 +1,23 @@
+%br
+.row
+  .span1
+    %strong{ style: "color: #A0A0A0;"}= article.section
+  .span11
+    %hr{ style: "border: 1px solid #A0A0A0; margin: 9px"}
+
 .row
   - if article.photo.to_s != "/photos/original/missing.png"
     .span2= image_tag article.photo.url(:thumb), style:"Float:left; padding:10px;"
-
-  .span8
-    %h3= link_to article.title, article
-    %p= article.body
-    .pull-right=  article.comments.length.to_s + " comments"
-%hr
+    .span10
+      %h3= link_to article.title, article
+      %p= article.body
+      .pull-right
+        =  article.comments.length.to_s
+        %i.icon-comment
+  - else
+    .span12
+      %h3= link_to article.title, article
+      %p= article.body
+      .pull-right
+        =  article.comments.length.to_s
+        %i.icon-comment

@@ -1,4 +1,6 @@
-<%= image_tag @article.photo.url(:large), class: "img-polaroid pull-center" %>
+<% if  @article.photo.to_s != "/photos/original/missing.png" %>
+  <%= image_tag @article.photo.url(:large), class: "img-polaroid pull-center" %>
+<% end %>
 <p>
   <strong>Title:</strong>
   <%= @article.title %>
@@ -15,12 +17,7 @@
 
 <h4> comments </h4>
 <% @article.comments.each do |comment| %>
-<p>
-  <hr>
-  <strong><%= comment.name %> |</strong>
-  <%= comment.body %> -
-  <em> <%= time_ago_in_words(comment.created_at) %> ago</em>
-</p>
+  <%= render "articles/comment", comment: comment %>
 <% end %>
 <%= form_for([@article, @comment]) do |f| %>
   <div class="field">

@@ -1,5 +1,7 @@
 reminder: left off on admin panel when got confused with select boxes.
  need tool for assigning roles
 
--- add name to user and avatars
--- add sections with colors
+-- add name to user
+-- add colors to sections
+-- individual section pages (or tabs with javascript)
+-- custom slideshow after horizon 'h'

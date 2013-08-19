@@ -1,5 +1,14 @@
-<h1> This is the Horizon, </h1>
-<lead>Finest news source this side of Montecito </lead>
+<div class="row">
+  <div class="span3">
+    <%= image_tag "h.png", class:"text-center" %>
+  </div>
+  <% @slides.each do |slide| %>
+  <div class="span3">
+    <%= image_tag @slides.first.photo.url(:medium) %>
+  </div>
+  <% end %>
+</div>
+
 <% @articles.each do |article| %>
   <%= render article, article: article %>
 <% end %>
