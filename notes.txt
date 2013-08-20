@@ -5,4 +5,4 @@ reminder: left off on admin panel when got confused with select boxes.
 -- add colors to sections
 -- individual section pages (or tabs with javascript)
 -- custom slideshow after horizon 'h'
--- publish field.
+-- publish boolean

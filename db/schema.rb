@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130818221303) do
+ActiveRecord::Schema.define(version: 20130820002309) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20130818221303) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "section"
+    t.boolean  "published",          default: false
   end
 
   create_table "comments", force: true do |t|

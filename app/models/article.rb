@@ -3,4 +3,6 @@ class Article < ActiveRecord::Base
   validates :title, :body, :section, presence: true
   validates :title, uniqueness: true
   has_many :comments, dependent: :destroy
+
+  scope :published, lambda {{conditions: ['published =?', true]}}
 end
