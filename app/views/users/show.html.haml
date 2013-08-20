@@ -1,0 +1,6 @@
+%h2= @user.email
+- if @user.name == nil
+  = link_to "add name", edit_user_path
+- else
+  = @user.name
+pages, etc.

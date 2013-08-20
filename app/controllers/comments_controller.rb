@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
+    @comment.name = current_user.name
     respond_to do |format|
       if @comment.save
         format.html {redirect_to(@article, notice: 'Comment was successfully created.')}
@@ -102,6 +103,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:article_id, :name, :body)
+      params.require(:comment).permit(:article_id, :body)
     end
 end

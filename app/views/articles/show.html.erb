@@ -1,30 +1,29 @@
 <% if  @article.photo.to_s != "/photos/original/missing.png" %>
   <%= image_tag @article.photo.url(:large), class: "img-polaroid pull-center" %>
 <% end %>
-<p>
-  <strong>Title:</strong>
+<h2>
   <%= @article.title %>
-</p>
+</h2>
 
 <p>
-  <strong>Body:</strong>
   <%= @article.body %>
 </p>
 <% if can? :update, @article %>
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <% end %>
-<%= link_to 'Back', articles_path %>
 
 <h4> comments </h4>
 <% @article.comments.each do |comment| %>
   <%= render "articles/comment", comment: comment %>
 <% end %>
 <%= form_for([@article, @comment]) do |f| %>
-  <div class="field">
-    <%= f.text_field :name, placeholder: "name" %>
-  </div>
-  <div class="field">
-    <%= f.text_area :body, placeholder: "Comment..." %>
-  </div>
-  <p><%= f.submit %></p>
+  <% if current_user.name == nil %>
+    <%= link_to "Who are you? (you must set a user name before commenting)", current_user %>
+  <% else %>
+    <div class="field">
+      <strong> <%= current_user.name %> </strong>
+      <%= f.text_area :body, placeholder: "Comment..." %>
+    </div>
+    <p><%= f.submit %></p>
+  <% end %>
 <% end %>

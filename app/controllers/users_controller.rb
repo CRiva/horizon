@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    # @user.update(params)
+    @user.update(user_params)
     @user.role_ids = params[:user][:role_ids]
     # render text: user_params.inspect
     redirect_to users_path
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :role_ids)
+    params.require(:user).permit(:name, :email, :role_ids) # try user:{:role_ids} when everyting else is working.
   end
 end

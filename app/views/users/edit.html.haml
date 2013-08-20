@@ -2,7 +2,10 @@
 - @user.roles.each do |role|
   %i.icon-ok
   = role.name
-%h4 Change Roles
+  %hr
 = form_for @user do |f|
-  = f.collection_check_boxes :role_ids, Role.all, :id, :name
+  = f.text_field :name, placeholder: "name..."
+  - if can? :manage, :all
+    %h4 Change Roles
+    = f.collection_check_boxes :role_ids, Role.all, :id, :name
   = f.button :submit

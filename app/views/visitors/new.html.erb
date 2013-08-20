@@ -1,10 +1,10 @@
 <div class="row">
   <div class="span3">
-    <%= image_tag "h.png", class:"text-center" %>
+    <%= image_tag "h.png" %>
   </div>
   <% @slides.each do |slide| %>
   <div class="span3">
-    <%= image_tag @slides.first.photo.url(:medium) %>
+    <%= link_to image_tag(slide.photo.url(:medium)), slide %>
   </div>
   <% end %>
 </div>
