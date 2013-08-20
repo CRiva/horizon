@@ -5,4 +5,5 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   scope :published, lambda {{conditions: ['published =?', true]}}
+  scope :news, lambda {{conditions: ['section =?', 'News']}}
 end

@@ -3,3 +3,4 @@
   = link_to "Change Roles", edit_user_path(user)
   - user.roles.each do |role|
     = role.name
+  = button_to "delete", @user, method: :delete, class: :destroy

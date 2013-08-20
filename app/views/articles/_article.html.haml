@@ -9,15 +9,24 @@
   - if article.photo.to_s != "/photos/original/missing.png"
     .span2= image_tag article.photo.url(:thumb), style:"Float:left; padding:10px;"
     .span10
-      %h3= link_to article.title, article
-      %p= article.body
+      %h3
+        = link_to article.title, article
+        %small.muted= time_ago_in_words(article.created_at) + " ago"
+      %p
+        = article.body[0...1000]
+        = link_to "... Read More", article
       .pull-right
         =  article.comments.length.to_s
         %i.icon-comment
+
+
   - else
     .span12
-      %h3= link_to article.title, article
+      %h3
+        = link_to article.title, article
+        %small.muted= time_ago_in_words(article.created_at) + " ago"
       %p= article.body
       .pull-right
         =  article.comments.length.to_s
         %i.icon-comment
+        %strong= "~ " +  time_ago_in_words(article.created_at) + " ago"

@@ -1,5 +1,8 @@
-%h4= @user.email
+%h3= @user.email
 - @user.roles.each do |role|
   %i.icon-ok
   = role.name
-= @user.role_ids
+%h4 Change Roles
+= form_for @user do |f|
+  = f.collection_check_boxes :role_ids, Role.all, :id, :name
+  = f.button :submit

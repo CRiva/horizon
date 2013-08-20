@@ -2,7 +2,7 @@ class VisitorsController < ApplicationController
 
   def new
     @slides = []
-    @articles = Article.all
+    @articles = Article.news
   end
 
 end
