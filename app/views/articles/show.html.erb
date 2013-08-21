@@ -9,7 +9,7 @@
   <%= @article.body %>
 </p>
 <% if can? :update, @article %>
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Edit', edit_article_path(@article) %>
 <% end %>
 
 <h4> comments </h4>

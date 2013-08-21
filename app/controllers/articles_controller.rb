@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.page(params[:page]).per(5)
+    @articles = Article.order('created_at DESC').page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.hmtl.haml

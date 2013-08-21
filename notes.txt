@@ -1,8 +1,8 @@
 -- add new role for editor who had a special panel for things posted on pages they own.
 -- add admin option to assign pages to people.
 -- individual section pages (or tabs with JavaScript)
+
 -- print edition pdf
--- article styling
 
 
 -- personal panel: drafts, role specific stuff, assign people pages they write for.
@@ -15,3 +15,10 @@
           place for idea and extra information.
           associated article
 -- front page, news briefs: featured story from each page.
+-- set colors client side.
+
+::: long term
+    cropper
+    live tiles up top
+    custom menu bar
+    estimate reading time.

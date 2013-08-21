@@ -3,4 +3,5 @@
 - @articles.each do |article|
   = render article, article: article
 = paginate @articles
-= link_to 'New Article', new_article_path
+- if can? :create, :article
+  = link_to 'New Article', new_article_path
