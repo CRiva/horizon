@@ -2,6 +2,10 @@
 -- add admin option to assign pages to people.
 -- individual section pages (or tabs with JavaScript)
 
+-- add roles for photographer, graphics-er
+
+-- dev application.
+
 -- print edition pdf
 
 
@@ -15,7 +19,7 @@
           place for idea and extra information.
           associated article
 -- front page, news briefs: featured story from each page.
--- set colors client side.
+-- set section colors on the admin panel
 
 ::: long term
     cropper

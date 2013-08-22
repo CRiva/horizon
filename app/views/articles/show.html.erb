@@ -1,5 +1,5 @@
 <% if  @article.photo.to_s != "/photos/original/missing.png" %>
-  <%= image_tag @article.photo.url(:large), class: "img-polaroid pull-center" %>
+  <%= image_tag @article.photo.url(:large), class: "img-polaroid" %>
 <% end %>
 <h2>
   <%= @article.title %>
@@ -10,6 +10,7 @@
 </p>
 <% if can? :update, @article %>
 <%= link_to 'Edit', edit_article_path(@article) %>
+<%= link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete %>
 <% end %>
 
 <h4> comments </h4>

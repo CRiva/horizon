@@ -2,4 +2,7 @@
   %hr
   %strong= comment.name + " |"
   = comment.body + " ~"
+  - if can? :edit, :comment
+    = link_to "Edit", edit_article_comment_path(@article, comment)
+    = link_to 'Delete', article_comment_path(@article, comment), confirm: "Are you sure?", method: :delete
   %em=  time_ago_in_words(comment.created_at) + " ago."

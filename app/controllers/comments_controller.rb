@@ -89,7 +89,7 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment.destroy
 
-    respond to do |format|
+    respond_to do |format|
       format.html { redirect_to(@article, notice: 'Comment was successfully deleted.')}
       format.xml { head :ok }
     end

@@ -1,0 +1,9 @@
+- current_user.roles.each do |role|
+  - if role.name == "Admin"
+    you are an admin.
+  - elsif role.name == "Editor"
+    you are an Editor.
+  - elsif role.name == "Author"
+    you are an Author.
+  - elsif role.name == "Member"
+    you are an Member.
