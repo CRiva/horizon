@@ -2,15 +2,16 @@
 -- add admin option to assign pages to people.
 -- individual section pages (or tabs with JavaScript)
 
--- add roles for photographer, graphics-er
-
 -- dev application.
 
 -- print edition pdf
 
-
 -- personal panel: drafts, role specific stuff, assign people pages they write for.
 -- fade in for images after horizon 'h'
+-- new photo res
+-- fluid tile design.
+-- tabs active on correct page.
+-- writting tool.
 
 -- story board. (for organization)
    things it needs:

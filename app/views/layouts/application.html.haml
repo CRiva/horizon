@@ -7,15 +7,16 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
+        :javascript
+          $(document).ready(function(){
+            $('.carousel').carousel();
+          });
   %body
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
+    %header
+      .container
     %main{:role => "main"}
       .container
-        .row
-          .span12
-            = render 'layouts/messages'
-            = yield
-          %footer
+        = render 'layouts/navigation'
+        = render 'layouts/messages'
+        = yield
+    %footer
