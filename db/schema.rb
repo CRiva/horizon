@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823000109) do
+ActiveRecord::Schema.define(version: 20130823060010) do
+
+  create_table "artices_pages", id: false, force: true do |t|
+    t.integer "page_id"
+    t.integer "article_id"
+  end
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -34,15 +39,15 @@ ActiveRecord::Schema.define(version: 20130823000109) do
     t.integer  "article_id"
   end
 
-  create_table "page_users", id: false, force: true do |t|
-    t.integer "page_id"
-    t.integer "user_id"
-  end
-
   create_table "pages", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pages_users", id: false, force: true do |t|
+    t.integer "page_id"
+    t.integer "user_id"
   end
 
   create_table "roles", force: true do |t|

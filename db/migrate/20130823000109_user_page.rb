@@ -1,6 +1,6 @@
 class UserPage < ActiveRecord::Migration
   def self.up
-    create_table :page_users, id: false do |t|
+    create_table :pages_users, id: false do |t|
       t.references:page, :user
     end
   end

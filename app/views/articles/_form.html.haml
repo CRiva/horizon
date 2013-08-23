@@ -3,7 +3,8 @@
 
   .form-inputs
     = f.input :title
-    = f.input :section
+    = f.input :page
+    = # f.collection_check_boxes :page, Page.all, :id, :name
     = f.input :body
     = f.file_field :photo
     = f.input :published

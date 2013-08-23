@@ -6,6 +6,6 @@ class AddPageTable < ActiveRecord::Migration
     end
   end
   def self.down
-    drop_table :roles
+    drop_table :pages
   end
 end

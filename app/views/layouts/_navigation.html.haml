@@ -15,7 +15,7 @@
           = link_to "Welcome, #{ current_user.email }", current_user
           - if can? :manage, :all
             %li= link_to "Manage Users", users_path
-            %li= link_to "Log Out", destroy_user_session_path, method: :delete
+          %li= link_to "Log Out", destroy_user_session_path, method: :delete
       - else
         %li= link_to "Sign Up", new_user_registration_path
         %li= link_to "Sign In", new_user_session_path
