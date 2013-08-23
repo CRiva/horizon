@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def page_name
+    Page.find(self.page).name
+  end
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)
   end
