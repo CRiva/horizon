@@ -3,5 +3,5 @@
   = link_to "Assign", edit_user_path(user)
   - user.roles.each do |role|
     = role.name
-    = user.page_name
+  = user.page_name
   = button_to "delete", @user, method: :delete, class: :destroy

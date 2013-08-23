@@ -1,3 +1,9 @@
+%h3= current_user.page_name + " Panel"
+- Article.where(page: current_user.page).each do |article|
+  .span
+    %lead= link_to  article.title, article
+    %em= article.body
+%br
 - current_user.roles.each do |role|
   - if role.name == "Admin"
     = render 'admin_panel'

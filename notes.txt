@@ -1,5 +1,4 @@
 -- add new role for editor who had a special panel for things posted on pages they own.
--- add admin option to assign pages to people.
 -- individual section pages (or tabs with JavaScript)
 
 -- dev application.
