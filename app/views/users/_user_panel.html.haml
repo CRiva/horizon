@@ -1,9 +1,11 @@
 - current_user.roles.each do |role|
   - if role.name == "Admin"
-    you are an admin.
+    = render 'admin_panel'
   - elsif role.name == "Editor"
-    you are an Editor.
+    = render 'editor_panel'
   - elsif role.name == "Author"
-    you are an Author.
+    = render 'author_panel'
+  - elsif role.name == "Creative"
+    = render 'creative_panel'
   - elsif role.name == "Member"
-    you are an Member.
+    = render 'member_panel'

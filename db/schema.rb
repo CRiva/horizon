@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130820002309) do
+ActiveRecord::Schema.define(version: 20130823000109) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20130820002309) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "section"
     t.boolean  "published",          default: false
+    t.integer  "page"
   end
 
   create_table "comments", force: true do |t|
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20130820002309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "article_id"
+  end
+
+  create_table "page_users", id: false, force: true do |t|
+    t.integer "page_id"
+    t.integer "user_id"
+  end
+
+  create_table "pages", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", force: true do |t|
@@ -59,6 +70,7 @@ ActiveRecord::Schema.define(version: 20130820002309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "page"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
