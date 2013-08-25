@@ -1,8 +1,12 @@
 %h3= current_user.page_name + " Panel"
 - Article.where(page: current_user.page).each do |article|
-  .span
-    %lead= link_to  article.title, article
-    %em= article.body
+  .row
+    .span8.offset3
+      %lead= link_to  article.title, edit_article_path
+      %em= article.body
+- #if can? :create, :article
+.row
+  %lead= link_to 'New Article', new_article_path
 %br
 - current_user.roles.each do |role|
   - if role.name == "Admin"

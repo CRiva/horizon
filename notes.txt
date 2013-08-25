@@ -1,8 +1,9 @@
 -- add new role for editor who had a special panel for things posted on pages they own.
 -- individual section pages (or tabs with JavaScript)
-
+-- make photos downloadable.
+-- can't add name without name, and doesn't set name.
 -- dev application.
-
+-- can't assign article page.
 -- print edition pdf
 
 -- personal panel: drafts, role specific stuff, assign people pages they write for.

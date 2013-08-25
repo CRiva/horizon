@@ -18,8 +18,10 @@
   <%= render "articles/comment", comment: comment %>
 <% end %>
 <%= form_for([@article, @comment]) do |f| %>
-  <% if current_user.name == nil %>
-    <%= link_to "Who are you? (you must set a user name before commenting)", current_user %>
+  <% if !current_user %>
+    <%= link_to "Sign In", new_user_session_path %>
+  <% elsif current_user.name == nil %>
+      <%= link_to "Who are you? (you must set a user name before commenting)", current_user %>
   <% else %>
     <div class="field">
       <strong> <%= current_user.name %> </strong>

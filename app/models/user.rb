@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def page_name
-    Page.find(self.page).name
+    if self.page
+      Page.find(self.page).name
+    else
+      return "News"
+    end
   end
 
   def role?(role)
