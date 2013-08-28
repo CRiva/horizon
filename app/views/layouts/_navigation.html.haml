@@ -1,15 +1,23 @@
 .row
-  .span3= image_tag 'h.png'
   - if @slides
     - @slides.each do |slide|
       .span3= link_to image_tag(slide.photo.url(:medium)), slide
 .row
-  .span3= image_tag 'subh.png'
   .span9
     %ul.nav.nav-tabs{style: "margin-top: 42px;"}
-      %li.active= link_to 'Horizon', root_path
-      %li= link_to 'articles', articles_path
+
+      - if controller.controller_path == "visitors"
+        %li.active= link_to 'Horizon', root_path
+      - else
+        %li= link_to 'Horizon', root_path
+
+      - if controller.controller_path == "articles"
+        %li.active= link_to 'articles', articles_path
+      - else
+        %li= link_to 'articles', articles_path
+
       %li= link_to 'About', page_path('about')
+
       - if user_signed_in?
         %li
           = link_to "Welcome, #{ current_user.email }", current_user

@@ -2,24 +2,24 @@
 .row
   .span1
     %strong{ style: "color: #{article.color};"}= article.page_name
-  .span11
+  .span8
     %hr{ style: "border: 5px solid #{article.color}; margin: 5px"}
 
 .row
   - if article.photo.to_s != "/photos/original/missing.png"
     .span2= link_to image_tag(article.photo.url(:thumb), style:"Float:left; padding:10px;"), article
-    .span10
+    .span6
       %h3
         = link_to article.title, article
         %small.muted= time_ago_in_words(article.created_at) + " ago"
       %p
-        = article.body[0...200]
+        = article.inspect
         = link_to "... Read More", article
       .pull-right
         =  article.comments.length.to_s
         %i.icon-comment
   - else
-    .span12
+    .span9
       %h3
         = link_to article.title, article
         %small.muted= time_ago_in_words(article.created_at) + " ago"

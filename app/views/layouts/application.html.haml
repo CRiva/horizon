@@ -16,7 +16,11 @@
       .container
     %main{:role => "main"}
       .container
-        = render 'layouts/navigation'
-        = render 'layouts/messages'
-        = yield
+        .row
+          = render 'layouts/messages'
+          .span3
+            = render 'layouts/side'
+          .span9
+            = render 'layouts/navigation'
+            = yield
     %footer

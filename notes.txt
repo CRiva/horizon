@@ -1,4 +1,4 @@
--- add new role for editor who had a special panel for things posted on pages they own.
+-- finish page panel and role panels.
 -- individual section pages (or tabs with JavaScript)
 -- make photos downloadable.
 -- can't add name without name, and doesn't set name.
@@ -8,7 +8,6 @@
 
 -- personal panel: drafts, role specific stuff, assign people pages they write for.
 -- fade in for images after horizon 'h'
--- new photo res
 -- fluid tile design.
 -- tabs active on correct page.
 -- writting tool.
@@ -27,3 +26,7 @@
     live tiles up top
     custom menu bar
     estimate reading time.
+-- zenpen
+-- medium style fonts and comments.
+
+do: tiles, sidebar
