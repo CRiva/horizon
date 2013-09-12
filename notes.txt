@@ -1,4 +1,3 @@
--- fix page assignments when no page is yet assigned.
 -- add name uniqueness check
 -- avatars
 -- finish page panel and role panels.
@@ -8,6 +7,9 @@
 // -- dev application.
 -- can't assign article page.
 -- print edition pdf
+
+-- change resolution on images.
+
 
 -- personal panel: drafts, role specific stuff,
    assign people pages they write for.
