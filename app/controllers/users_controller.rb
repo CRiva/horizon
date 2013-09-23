@@ -5,7 +5,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show; end
+  def show
+    @unpub_articles = Article.where(page: current_user.page, published: false)
+    @pub_articles = Article.where(page: current_user.page, published: true)
+  end
 
   def edit
   end

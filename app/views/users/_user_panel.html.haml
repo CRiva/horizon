@@ -1,9 +1,28 @@
 %h3= current_user.page_name + " Panel"
-- Article.where(page: current_user.page).each do |article|
-  .row
-    .span8.offset3
-      %lead= link_to  article.title, edit_article_path
-      %em= article.body
+%table{:class => "table table-hover"}
+  %thead
+    %tr
+      %th
+        %strong Title
+      %th
+        %strong Author
+      %th
+        %strong Updated At
+      %th
+        %strong Due Date
+      %th
+        %strong Stage
+  - @unpub_articles.each do |article|
+    %tr
+      %td= link_to  article.title, edit_article_path(article)
+      - if article.author_id
+        %td= User.find(article.author_id).name
+      - else
+        %td NA
+
+      %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
+      %td= article.due_date
+      %td NA
 - #if can? :create, :article
 .row
   %lead= link_to 'New Article', new_article_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823060010) do
+ActiveRecord::Schema.define(version: 20130923054357) do
 
   create_table "artices_pages", id: false, force: true do |t|
     t.integer "page_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20130823060010) do
     t.datetime "photo_updated_at"
     t.boolean  "published",          default: false
     t.integer  "page"
+    t.integer  "author_id"
+    t.datetime "due_date"
   end
 
   create_table "comments", force: true do |t|

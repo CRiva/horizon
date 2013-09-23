@@ -6,7 +6,7 @@
 // -- dev application.
 -- can't assign article page.
 -- print edition pdf
-
+-- find way to query users by role
 -- change resolution on images.
 
 -- after editing other user, redirects to user's panel, should direct to own panel
