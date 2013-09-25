@@ -1,4 +1,3 @@
--- add name uniqueness check (capital letters don't matter)
 -- finish page panel and role panels.
 -- individual section pages (or tabs with JavaScript)
 -- make photos downloadable.

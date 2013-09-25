@@ -5,24 +5,16 @@
 .row
   .span9
     %ul.nav.nav-tabs{style: "margin-top: 42px;"}
-
-      - if controller.controller_path == "visitors"
-        %li.active= link_to 'Horizon', root_path
-      - else
-        %li= link_to 'Horizon', root_path
-
-      - if controller.controller_path == "articles"
-        %li.active= link_to 'articles', articles_path
-      - else
-        %li= link_to 'articles', articles_path
+      - Page.all.each do |page|
+        %li= link_to page.name, articles_path(page_name: page.name)
 
       %li= link_to 'About', page_path('about')
 
       - if user_signed_in?
         %li
-          = link_to "Welcome, #{ current_user.email }", current_user
+          = link_to "#{ current_user.email }", current_user
           - if can? :manage, :all
-            %li= link_to "Manage Users", users_path
+            %li= link_to "Admin", users_path
           %li= link_to "Log Out", destroy_user_session_path, method: :delete
       - else
         %li= link_to "Sign Up", new_user_registration_path
