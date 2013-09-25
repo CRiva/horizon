@@ -1,23 +1,16 @@
-%br
-.row
-  .span1
-    %strong{ style: "color: #{article.color};"}= article.page_name
-  .span8
-    %hr{ style: "border: 5px solid #{article.color}; margin: 5px"}
-
+%hr
 .row
   - if article.photo.to_s != "/photos/original/missing.png"
-    .span2= link_to image_tag(article.photo.url(:thumb), style:"Float:left; padding:10px;"), article
+    .span2= link_to image_tag(article.photo.url(:thumb)), article
     .span6
-      %h3
-        = link_to article.title, article
-        %small.muted= time_ago_in_words(article.created_at) + " ago"
-      %p
-        = article.body
-        = link_to "... Read More", article
-      .pull-right
-        =  article.comments.length.to_s
-        %i.icon-comment
+      %h3= link_to article.title, article
+      - if article.author_id
+        %small.muted= User.find(article.author_id)
+      %small.muted= article.page_name
+      %small.muted= time_ago_in_words(article.created_at) + " ago"
+    .pull-right
+      =  article.comments.length.to_s
+      %i.icon-comment
   - else
     .span9
       %h3
