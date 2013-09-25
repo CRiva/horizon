@@ -1,10 +1,10 @@
+-- state machine
 -- finish page panel and role panels.
 -- individual section pages (or tabs with JavaScript)
 -- make photos downloadable.
-// -- dev application.
--- can't assign article page.
 -- print edition pdf
 -- find way to query users by role
+   ---- just do page instead -----
 -- change resolution on images.
 
 -- after editing other user, redirects to user's panel, should direct to own panel

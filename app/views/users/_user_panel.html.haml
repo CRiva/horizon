@@ -25,7 +25,8 @@
       %td NA
 - #if can? :create, :article
 .row
-  %lead= link_to 'New Article', new_article_path
+  .span2
+    %button.btn= link_to 'New Article', new_article_path
 %br
 - current_user.roles.each do |role|
   - if role.name == "Admin"
