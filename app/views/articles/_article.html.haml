@@ -1,22 +1,29 @@
 %hr
 .row
-  - if article.photo.to_s != "/photos/original/missing.pang"
+  - if article.photo.file?
     .span2= link_to image_tag(article.photo.url(:thumb)), article
     .span6
       %h3= link_to article.title, article
+      %i.icon-user
       - if User.find_by_id(article.author_id)
-        %small.muted= User.find(article.author_id)
-      %small.muted= article.page_name
-      %small.muted= time_ago_in_words(article.created_at) + " ago"
-    .pull-right
-      =  article.comments.length.to_s
-      %i.icon-comment
+        %muted= User.find(article.author_id).name
+        %i.icon-globe
+      %strong= article.page_name
+      %i.icon-time
+      %muted= time_ago_in_words(article.created_at) + " ago"
+      .pull-right
+        =  article.comments.length.to_s
+        %i.icon-comment
   - else
-    .span9
-      %h3
-        = link_to article.title, article
-        %small.muted= time_ago_in_words(article.created_at) + " ago"
-      %p= article.body
+    .span8
+      %h3= link_to article.title, article
+      %i.icon-user
+      - if User.find_by_id(article.author_id)
+        %muted= User.find(article.author_id).name
+        %i.icon-globe
+      %strong= article.page_name
+      %i.icon-time
+      %muted= time_ago_in_words(article.created_at) + " ago"
       .pull-right
         =  article.comments.length.to_s
         %i.icon-comment

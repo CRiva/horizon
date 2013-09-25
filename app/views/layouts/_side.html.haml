@@ -1,7 +1,6 @@
 .row
-  .span3= image_tag 'h.png'
-  .span3= image_tag 'subh.png'
+  .span3= link_to image_tag('h.png'), root_path
+  .span3= link_to image_tag('subh.png'), root_path
   .span2
     .span= link_to image_tag('facebook.png'), "https://www.facebook.com/westmont.horizon", :target => '_blank'
     .span= link_to image_tag('twitter.png'), "https://twitter.com/westmonthorizon", :target => '_blank'
-
