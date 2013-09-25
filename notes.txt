@@ -6,12 +6,6 @@
 -- find way to query users by role
    ---- just do page instead -----
 -- change resolution on images.
-
--- after editing other user, redirects to user's panel, should direct to own panel
-
--- updating name needs to not be case sensitive
--- updating name to used name does not throw error, just doesnt update
-
 -- personal panel: drafts, role specific stuff,
    assign people pages they write for.
 -- fade in for images after horizon 'h'

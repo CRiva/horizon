@@ -4,7 +4,7 @@
   = role.name
   %hr
 = simple_form_for @user do |f|
-  = f.text_field :name, placeholder: "name..."
+  = f.input :name, placeholder: "name..."
   - if can? :manage, :all
     %h4 Assign Pages
     %p= # f.collection_check_boxes :page, Page.all, :id, :name
