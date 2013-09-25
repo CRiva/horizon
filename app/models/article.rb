@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   has_and_belongs_to_many :pages
   has_attached_file :photo, styles: {large: "500x500>", medium: "300x300#", thumb: "100x100#" }
-  validates :page, :title, :body, presence: true # add page when working
+  validates :page, :title, :body, :author_id, presence: true # add page when working
   validates :title, uniqueness: true
   has_many :comments, dependent: :destroy
 
