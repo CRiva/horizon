@@ -13,7 +13,7 @@
         = link_to article.title, article
         %small.muted= time_ago_in_words(article.created_at) + " ago"
       %p
-        = article.inspect
+        = article.body
         = link_to "... Read More", article
       .pull-right
         =  article.comments.length.to_s
