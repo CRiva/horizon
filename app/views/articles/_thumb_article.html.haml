@@ -13,13 +13,13 @@
 
 - else
   .span3
-    = link_to image_tag('missing.png'), article
+    %h1.strong.text-center= article.page_name
+    %h3.text-center= article.author_name
+    =  # link_to image_tag('missing.png', class: "img-circle"), article
     .caption{ style: "min-height: 100px;"}
       %h5
         = link_to article.title, article
         %br
-        %strong= article.author_name
-        %br
-        %small.muted= article.page_name
-        %small.muted= time_ago_in_words(article.created_at) + " ago"
+        %h5.muted= article.body[0...212] + "..."
+        %h5= time_ago_in_words(article.created_at) + " ago"
         %hr
