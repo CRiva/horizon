@@ -1,0 +1,5 @@
+- @articles.in_groups_of(3) do |row|
+  .row
+    - row.each do |article|
+      - if article
+        = render 'articles/thumb_article', article: article
