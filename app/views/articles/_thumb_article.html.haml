@@ -4,6 +4,9 @@
     .caption{ style: "min-height: 100px;"}
       %h5
         = link_to article.title, article
+        %hr
+        %strong= article.author_name
+        %br
         %small.muted= article.page_name
         %small.muted= time_ago_in_words(article.created_at) + " ago"
 - else
@@ -12,5 +15,8 @@
     .caption{ style: "min-height: 100px;"}
       %h5
         = link_to article.title, article
+        %hr
+        %strong= article.author_name
+        %br
         %small.muted= article.page_name
         %small.muted= time_ago_in_words(article.created_at) + " ago"

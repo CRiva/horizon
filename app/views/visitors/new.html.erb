@@ -1,6 +1,7 @@
 <div class="row" >
   <ul class="thumbnails">
-    <% @articles.each do |article| %>
+    <% @articles.each do |article, index| %>
+      <% if index%3 == 0 %>
       <%= render "/articles/thumb_article", article: article %>
     <% end %>
   </ul>

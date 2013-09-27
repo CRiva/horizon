@@ -16,6 +16,16 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def author_name
+    if self.author_id
+      User.find(self.author_id).name
+    else
+      'NA'
+    end
+
+  end
+
+
   def color
     'black'
   end
