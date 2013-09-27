@@ -6,3 +6,11 @@
         = link_to article.title, article
         %small.muted= article.page_name
         %small.muted= time_ago_in_words(article.created_at) + " ago"
+- else
+  %li.span3.thumbnail
+    = link_to image_tag('missing.png'), article
+    .caption{ style: "min-height: 100px;"}
+      %h5
+        = link_to article.title, article
+        %small.muted= article.page_name
+        %small.muted= time_ago_in_words(article.created_at) + " ago"
