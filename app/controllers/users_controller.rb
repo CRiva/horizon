@@ -48,6 +48,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :role_ids, :page) # try user:{:role_ids} when everyting else is working.
+    f = params.require(:user).permit(:name, :email, :role_ids, :page) # try user:{:role_ids} when everyting else is working.
+    puts f.inspect
   end
 end
