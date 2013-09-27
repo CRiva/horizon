@@ -6,7 +6,7 @@
 </h2>
 
 <p>
-  <%= @article.body %>
+  <%= simple_format @article.body %>
 </p>
 <% if can? :update, @article %>
 <%= link_to 'Edit', edit_article_path(@article) %>
