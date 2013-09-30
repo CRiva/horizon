@@ -7,6 +7,7 @@
 
 <p>
   <%= @article.body %>
+  <%= social_share_button_tag(@article.title) %>
 </p>
 <% if can? :update, @article %>
 <%= link_to 'Edit', edit_article_path(@article) %>
