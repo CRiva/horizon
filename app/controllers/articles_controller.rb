@@ -5,10 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    section_articles = Article.where(page: params[:page_id])
-    @articles = section_articles.page(params[:page]).per(5)
-    # .published.order('created_at DESC').page(params[:page]).per(5)
-
+    # get the articles for that page (i.e. news, sports)
+    @ariticles = Article.where(page: params[:page_id]).page(params[:page]).per(10)
+    # do different formatting.
     respond_to do |format|
       format.html # index.hmtl.haml
       format.xml { render xml: @articles }
@@ -17,24 +16,23 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   # GET /articles/1.json
-  def show
+  def show # make a new comment to show at the bottom of the page.
     @comment = Comment.new(article: @article)
   end
 
   # GET /articles/new
-  def new
+  def new # make a new article for the new form
     @article = Article.new
   end
 
   # GET /articles/1/edit
-  def edit
-  end
+  def edit; end # article is already chosen in the set_article private function
 
   # POST /articles
   # POST /articles.json
   def create
+    # saves article created in new form
     @article = Article.new(article_params)
-    # @comment = @article.comments.build(params[:comment])
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -49,6 +47,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    # same as new, just with a article that already existed.
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -63,6 +62,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    # delete a specific article.
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url }

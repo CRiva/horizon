@@ -1,7 +1,8 @@
 class Article < ActiveRecord::Base
   belongs_to :pages
+  # NOTE: might need to update sizes as the design has changed.
   has_attached_file :photo, styles: {large: "500x500>", medium: "300x300#", thumb: "100x100#" }
-  validates :page, :title, :body, :author_id, presence: true # add page when working
+  validates :page, :title, :body, :author_id, presence: true
   validates :title, uniqueness: true
   has_many :comments, dependent: :destroy
 
@@ -24,10 +25,4 @@ class Article < ActiveRecord::Base
     end
 
   end
-
-
-  def color
-    'black'
-  end
-
 end

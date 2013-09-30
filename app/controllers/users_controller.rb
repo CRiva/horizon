@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    # load the unpublished article for a particular page.
     @unpub_articles = Article.where(page: current_user.page, published: false)
-    @pub_articles = Article.where(page: current_user.page, published: true)
+    # @pub_articles = Article.where(page: current_user.page, published: true)
   end
 
   def edit
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
 
 
   private
-
+  # share some functionality
   def set_user
     @user = User.find(params[:id])
   end
