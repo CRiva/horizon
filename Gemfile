@@ -17,6 +17,7 @@ gem 'devise', '3.0.0.rc'
 gem 'cancan'
 gem 'paperclip', "~> 3.0"
 gem 'kaminari'
+gem 'social-share-button'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby
