@@ -6,7 +6,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     # get the articles for that page (i.e. news, sports)
-    @ariticles = Article.where(page: params[:page_id]).page(params[:page]).per(10)
+    section_articles = Article.where(page: params[:page_id])
+    @articles = section_articles.page(params[:page]).per(10)
     # do different formatting.
     respond_to do |format|
       format.html # index.hmtl.haml
