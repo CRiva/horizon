@@ -1,4 +1,28 @@
 class Article < ActiveRecord::Base
+  include AASM
+  aasm do
+    state :new, initial: true
+    state :reviewing
+    state :writting
+    state :copy
+    state :ready
+    state :rejected
+
+    event :review do
+      transitions from: :new, to: :review
+      transitions from: :new, to: :rejected
+    end
+    event :assign do
+      transitions from: :review, to: :writting
+    end
+    event :wrote do
+      transitions from: :writting, to: :copy
+    end
+    event :finish do
+      transitions from: :copy, to: :ready
+    end
+  end
+
   belongs_to :pages
   # NOTE: might need to update sizes as the design has changed.
   has_attached_file :photo, styles: {large: "500x500>", medium: "300x300#", thumb: "100x100#" }

@@ -17,8 +17,11 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        puts "look here: ---------------------------"
+        puts params[:user][:page].inspect
         @user.role_ids = params[:user][:role_ids]
-        @user.page = params[:page]
+        @user.page = params[:user][:page]
+        @user.save
         format.html { redirect_to @user, notice: 'user was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,4 +1,4 @@
-- if can? :create, :article
+- if can? :create, :article # MOVE THIS TO ANOTHER PARTIAL
   %h3= current_user.page_name + " Panel"
   %table{:class => "table table-hover"}
     %thead
@@ -10,19 +10,17 @@
         %th
           %strong Updated At
         %th
-          %strong Due Date
-        %th
           %strong Stage
         - @unpub_articles.each do |article|
           %tr
             %td= link_to  article.title, edit_article_path(article)
-            - if article.author_id
+            - if User.exists?(article.author_id)
               %td= User.find(article.author_id).name
             - else
               %td NA
             %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
-            %td= article.due_date
-            %td NA
+            %td
+              .span.badge= article.aasm_state
 
   .row
     .span2
