@@ -12,7 +12,7 @@
 
       - if user_signed_in?
         %li
-          = link_to "#{ current_user.email }", current_user
+          = link_to "#{ current_user.name }", current_user
           - if can? :manage, :all
             %li= link_to "Admin", users_path
           %li= link_to "Log Out", destroy_user_session_path, method: :delete
