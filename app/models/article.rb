@@ -42,8 +42,8 @@ class Article < ActiveRecord::Base
   end
 
   def author_name
-    if self.author_id
-      User.find(self.author_id).name
+      if User.exists?(self.author_id)
+	User.find(self.author_id).name
     else
       'NA'
     end
