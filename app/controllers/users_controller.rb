@@ -19,8 +19,6 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        puts "look here: --====-=-=-=-=-=-=-=-=-=-"
-        puts user_params.inspect
         @user.name = params[:user][:name]
         @user.role_ids = params[:user][:role_ids]
         @user.page = params[:user][:page]
