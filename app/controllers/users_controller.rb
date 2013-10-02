@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     # @pub_articles = Article.where(page: current_user.page, published: true)
   end
 
+  def new
+    @user = User.new
+  end
+
   def edit
   end
 

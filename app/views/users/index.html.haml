@@ -1,7 +1,10 @@
-- @users.each do |user|
-  %li= user.email
-  = link_to "Assign", edit_user_path(user)
-  - user.roles.each do |role|
-    = role.name
-  = user.page_name
-  = button_to "delete", user, method: :delete, class: :destroy
+- if can? :manage, :all
+  - @users.each do |user|
+    %li
+      = user.email
+      = user.name
+    = link_to "Assign", edit_user_path(user)
+    - user.roles.each do |role|
+      = role.name
+    = user.page_name
+    = button_to "delete", user, method: :delete, class: :destroy

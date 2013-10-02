@@ -23,3 +23,9 @@
 .row
   .span2
     %button.btn= link_to 'New Article', new_article_path
+
+
+%h3= current_user.page_name + " Writers Panel"
+
+- User.where(page: current_user.page).each do |writter|
+  %li= writter.name.inspect
