@@ -2,6 +2,7 @@
 - if @user.name == nil
   = link_to "add name", edit_user_path
 - else
-  = @user.name
+  = link_to @user.name, edit_user_path
+|
 = link_to "Change Password", edit_user_registration_path
 = render partial: "user_panel"
