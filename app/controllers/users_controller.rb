@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   def show
     # load the unpublished article for a particular page.
     @unpub_articles = Article.where(page: current_user.page, published: false)
+    @new_articles = Article.where(aasm_state: 'new', published: false).order("articles.page ASC")
+    @my_articles  = Article.where(author_id: current_user)
     # @pub_articles = Article.where(page: current_user.page, published: true)
   end
 
