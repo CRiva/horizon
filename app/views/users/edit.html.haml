@@ -1,4 +1,5 @@
 %h3= @user.email
+= link_to "Change Password", edit_user_registration_path
 - @user.roles.each do |role|
   %i.icon-ok
   = role.name
