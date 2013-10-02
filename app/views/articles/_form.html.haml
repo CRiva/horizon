@@ -6,7 +6,7 @@
     = f.input :page, collection: Page.all
     = f.input :body
     = f.file_field :photo
-    = f.input :author_id, collection: User.all
+    = f.input :author_id, collection: User.where(page: current_user.page)
     = f.input :due_date
     = f.input :published
 
