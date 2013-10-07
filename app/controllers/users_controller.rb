@@ -8,7 +8,13 @@ class UsersController < ApplicationController
   def show
     # load the unpublished article for a particular page.
     @unpub_articles = Article.where(page: current_user.page, published: false)
+    @new_articles = Article.where(aasm_state: 'new', published: false).order("articles.page ASC")
+    @my_articles  = Article.where(author_id: current_user)
     # @pub_articles = Article.where(page: current_user.page, published: true)
+  end
+
+  def new
+    @user = User.new
   end
 
   def edit
@@ -17,8 +23,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        @user.name = params[:user][:name]
         @user.role_ids = params[:user][:role_ids]
-        @user.page = params[:page]
+        @user.page = params[:user][:page]
+        @user.save
         format.html { redirect_to @user, notice: 'user was successfully updated.' }
         format.json { head :no_content }
       else

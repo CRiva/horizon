@@ -18,6 +18,7 @@ gem 'cancan'
 gem 'paperclip', "~> 3.0"
 gem 'kaminari'
 gem 'social-share-button'
+gem 'aasm'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby

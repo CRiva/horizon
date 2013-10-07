@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
 
@@ -6,7 +7,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     # get the articles for that page (i.e. news, sports)
-    section_articles = Article.where(page: params[:page_id])
+    section_articles = Article.published.where(page: params[:page_id])
     @articles = section_articles.page(params[:page]).per(10)
     # do different formatting.
     respond_to do |format|
