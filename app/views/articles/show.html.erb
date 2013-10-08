@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
 <% if  @article.photo.to_s != "/photos/original/missing.png" %>
   <%= image_tag @article.photo.url(:large), class: "img-polaroid" %>
 <% end %>
@@ -5,9 +7,40 @@
   <%= @article.title %>
 </h2>
 
-<p>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var size = $("#data > p").size();
+ $(".Column1 > p").each(function(index){
+  if (index >= size/2){
+   $(this).appendTo(".Column2");
+  }
+ });
+  });
+</script>
+
+<style type="text/css">
+.Column1{float:left; width:45%;padding:2%;}
+.Column2{float:left; width:45%;padding:2%;}
+@media only screen and (min-width: 481px) and (max-width: 768px){
+.Column1{float:left; width:100%;padding:3%;}
+.Column2{float:left; width:100%;padding:3%;}}
+@media only screen and (min-width: 321px) and (max-width: 480px){
+.Column1{float:left; width:100%;padding:3%;}
+.Column2{float:left; width:100%;padding:3%;}}
+@media only screen and (max-width: 320px){
+.Column1{float:left; width:100%;padding:3%;}
+.Column2{float:left; width:100%;padding:3%;}}
+</style>
+
+  <div id="data" class="Column1">
   <%= simple_format @article.body %>
-</p>
+  </div>
+  <div class="Column2"></div>
+
+<div class="span9">
+  <%= social_share_button_tag(@article.title) %>
+
+
 <% if can? :update, @article %>
 <%= link_to 'Edit', edit_article_path(@article) %>
 <%= link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete %>
@@ -30,3 +63,4 @@
     <p><%= f.submit %></p>
   <% end %>
 <% end %>
+</div>
