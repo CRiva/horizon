@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @unpub_articles = Article.where(page: current_user.page, published: false)
     @new_articles = Article.where(aasm_state: 'new', published: false).order("articles.page ASC")
     @my_articles  = Article.where(author_id: current_user)
+    @my_comments = Comment.where(name: current_user.name)
     # @pub_articles = Article.where(page: current_user.page, published: true)
   end
 
@@ -26,6 +27,9 @@ class UsersController < ApplicationController
         @user.name = params[:user][:name]
         @user.role_ids = params[:user][:role_ids]
         @user.page = params[:user][:page]
+        if @user.role_ids == []
+          @user.role_ids = [3] # to default to member if no id
+        end
         @user.save
         format.html { redirect_to @user, notice: 'user was successfully updated.' }
         format.json { head :no_content }
