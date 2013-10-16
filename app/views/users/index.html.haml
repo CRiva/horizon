@@ -7,4 +7,4 @@
     - user.roles.each do |role|
       = role.name
     = user.page_name
-    = button_to "delete", user, method: :delete, class: :destroy
+    = button_to "delete", user, method: :delete, class: :destroy, confirm: "Are you sure?", method: :delete
