@@ -142,15 +142,6 @@ blockquote {
 	border: 0px;
 }
 
-a {
-	text-decoration: none;
-	color: deepskyblue;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
 .overlay {
 	position: fixed;
 	display: none;

@@ -29,5 +29,5 @@
 
 
 TODO
-        on page editor.
         fix funny fonts and colors.
+        make other users pages invisible.
