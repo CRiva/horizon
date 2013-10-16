@@ -16,7 +16,7 @@ class Ability
       can :manage, :all
 
     elsif user.role? :Author # ID = 2 Author edit and read
-      can [:read, :edit, :update, :create], [Article]
+      can [:read, :edit, :update], [Article]
 
     elsif user.role? :Member # ID = 3 member is a reader, who can comment.
       can :read, :all
