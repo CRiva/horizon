@@ -7,12 +7,12 @@ you are a member.
     %tr
       %th
         %strong Article
-      %th
-        %strong Comment
-      %th
-        %strong Created At
-      - @my_comments.each do |comment|
-        %tr
-          %td= link_to Article.find(comment.article_id).title, Article.find(comment.article_id)
-          %td= comment.body
-          %td= comment.created_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
+        %th
+          %strong Comment
+          %th
+            %strong Created At
+            - @my_comments.each do |comment|
+              %tr
+                %td= link_to Article.find(comment.article_id).title, Article.find(comment.article_id)
+                %td= comment.body
+                %td= comment.created_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
