@@ -16,14 +16,12 @@
         %span.caret
       %ul.dropdown-menu
         %li
-          %a{href: "#"}
-            %i.icon-pencil 
-            = link_to "Assign", edit_user_path(user)
-            - user.roles.each do |role|
-              = role.name
+          %a{href: url_for(edit_user_path(user))}
+            %i.icon-pencil
+            \ Assign
         %li
-          %a{href: "#"}
+          = link_to user, method: :delete, class: :destroy, confirm: "Are you sure?" do
             %i.icon-trash
-            = link_to "delete", user, method: :delete, class: :destroy, confirm: "Are you sure?", method: :delete
+            \ Delete
     %hr
 
