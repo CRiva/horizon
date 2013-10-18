@@ -2,9 +2,16 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :title
+
     = f.input :page, collection: Page.all
-    = f.input :body
+    %section
+      %header{contenteditable:"true", class:"header", id:"article_the_title"}
+        Title...
+      %hr
+      %article{contenteditable:"true", class:"content", id:"article_content"}
+        %p Body...
+    = f.hidden_field :title
+    = f.hidden_field :body
     = f.file_field :photo
     = f.input :author_id, collection: User.all # User.where(page: current_user.page)
     = f.input :due_date
@@ -12,3 +19,15 @@
 
   .form-actions
     = f.button :submit
+
+:javascript
+  $(document).ready(function(){
+    $("input[name='commit']").button().click(function(){
+      $("#article_body").val($("#article_content").html());
+    })
+  });
+  $(document).ready(function(){
+    $("input[name='commit']").button().click(function(){
+      $("#article_title").val($("#article_the_title").html());
+    })
+  });

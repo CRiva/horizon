@@ -9,11 +9,11 @@
       %th
         %strong Updated At
       %th
-        %strong Need
+        = # %strong Need
       - @my_articles.each do |article|
         %tr
           %td= link_to  article.title, edit_article_path(article)
           %td SOON
           %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
           %td
-            .span.badge Upload
+            = # .span.badge Upload

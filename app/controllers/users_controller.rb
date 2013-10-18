@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update
+  def update # TODO shorten this.
     respond_to do |format|
       if @user.update(user_params)
         @user.name = params[:user][:name]

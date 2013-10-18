@@ -24,5 +24,6 @@
         %li
           %a{href: "#"}
             %i.icon-trash
-            = link_to "delete", user, method: :delete, class: :destroy
+            = link_to "delete", user, method: :delete, class: :destroy, confirm: "Are you sure?", method: :delete
     %hr
+

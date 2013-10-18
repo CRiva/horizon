@@ -9,7 +9,7 @@
 -- change resolution on images.
 -- tabs active on correct page.
 -- writting tool.
-
+-- change author to string rather than ID
 -- story board. (for organization)
    things it needs:
           place for photo/graphics requests
@@ -26,3 +26,8 @@
     estimate reading time.
 -- zenpen
 -- medium style fonts and comments.
+
+
+TODO
+        fix funny fonts and colors.
+        make other users pages invisible.

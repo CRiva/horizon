@@ -9,7 +9,7 @@
       %th
         %strong Updated At
       %th
-        %strong Stage
+        = # %strong Stage
       - @unpub_articles.each do |article|
         %tr
           %td= link_to  article.title, edit_article_path(article)
@@ -19,7 +19,7 @@
             %td NA
           %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
           %td
-            .span.badge= article.aasm_state
+            = # .span.badge= article.aasm_state
 .row
   .span2
     %button.btn= link_to 'New Article', new_article_path
