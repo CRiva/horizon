@@ -1,9 +1,12 @@
+= image_tag @user.avatar.url(:thumb)
+
 %h2= @user.email
 - if current_user.id == @user.id
   - if @user.name == nil
-    = link_to "add name", edit_user_path
-  - else
+    %h4= link_to "add name", edit_user_path
+  - else    
     = link_to @user.name, edit_user_path
     |
     = link_to "Change Password", edit_user_registration_path
+    |
     = render partial: "user_panel"
