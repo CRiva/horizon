@@ -1,4 +1,4 @@
-= image_tag @user.avatar.url(:thumb)
+= image_tag @user.avatar.url(:medium)
 
 %h2= @user.email
 - if current_user.id == @user.id
@@ -6,5 +6,4 @@
     %h4= link_to "add name", edit_user_path
   - else    
     = link_to @user.name, edit_user_path
-    |
     = render partial: "user_panel"

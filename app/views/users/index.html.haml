@@ -3,7 +3,8 @@
     %br
       .row
         .span2
-          \ hello
+          = image_tag user.avatar.url(:medium)
+          %br
           %br
           .btn-group
             %a.btn.btn-primary{href: "#"}
@@ -21,12 +22,13 @@
                   %i.icon-trash
                   \ Delete
         .span7
-          Email:
-          = user.email
-          %br
-          Name:
-          = user.name
-          %br
+          %h4
+            Email:
+            = user.email
+          %h4
+            Name:
+            = user.name
+          %h4
             = user.page_name
         
       %hr
