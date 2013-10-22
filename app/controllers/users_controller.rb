@@ -27,6 +27,7 @@ class UsersController < ApplicationController
         @user.name = params[:user][:name]
         @user.role_ids = params[:user][:role_ids]
         @user.page = params[:user][:page]
+        @user.avatar = params[:user][:avatar]
         if @user.role_ids == []
           @user.role_ids = [3] # to default to member if no id
         end
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    f = params.require(:user).permit(:name, :email, :role_ids, :page) # try user:{:role_ids} when everyting else is working.
+    f = params.require(:user).permit(:name, :email, :role_ids, :page, :avatar) # try user:{:role_ids} when everyting else is working.
     puts f.inspect
   end
 end

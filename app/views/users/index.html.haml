@@ -1,10 +1,35 @@
 - if can? :manage, :all
   - @users.each do |user|
-    %li
-      = user.email
-      = user.name
-    = link_to "Assign", edit_user_path(user)
-    - user.roles.each do |role|
-      = role.name
-    = user.page_name
-    = button_to "delete", user, method: :delete, class: :destroy, confirm: "Are you sure?", method: :delete
+    %br
+      .row
+        .span2
+          = image_tag user.avatar.url(:medium)
+          %br
+          %br
+          .btn-group
+            %a.btn.btn-primary{href: "#"}
+              %i.icon-user.icon-white
+              = user.name
+            %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: url_for(edit_user_path(user))}
+                  %i.icon-pencil
+                  \ Assign
+              %li
+                = link_to user, method: :delete, class: :destroy, confirm: "Are you sure?" do
+                  %i.icon-trash
+                  \ Delete
+        .span7
+          %h4
+            Email:
+            = user.email
+          %h4
+            Name:
+            = user.name
+          %h4
+            = user.page_name
+        
+      %hr
+
