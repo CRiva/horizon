@@ -22,17 +22,17 @@ class UsersController < ApplicationController
   end
 
   def update # TODO shorten this.
+    @user.name = params[:user][:name]
+    @user.role_ids = params[:user][:role_ids]
+    @user.page = params[:user][:page]
+    #@user.avatar = params[:user][:avatar] # removed until implemented with strong params
+    if @user.role_ids == []
+      @user.role_ids = [3] # to default to member if no id
+    end
+
     respond_to do |format|
-      if @user.update(user_params)
-        @user.name = params[:user][:name]
-        @user.role_ids = params[:user][:role_ids]
-        @user.page = params[:user][:page]
-        @user.avatar = params[:user][:avatar]
-        if @user.role_ids == []
-          @user.role_ids = [3] # to default to member if no id
-        end
-        @user.save
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
+      if @user.save
+        format.html { redirect_to current_user, notice: 'user was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

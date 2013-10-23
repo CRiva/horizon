@@ -30,6 +30,5 @@
 
 TODO
 
-make author a text field.
 buff out panels for different roles.
 make people not automatically associated with news.

@@ -61,8 +61,17 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     # same as new, just with a article that already existed.
+    @article = Article.new()
+    @article.title = article_params[:title]
+    @article.body  = article_params[:body]
+    @article.author_id = article_params[:author_id]
+    @article.author_name = User.find(article_params[:author_id]).name
+    @article.published = article_params[:published]
+    @article.page = article_params[:page]
+
     respond_to do |format|
-      if @article.update(article_params)
+      if @article.save
+
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
