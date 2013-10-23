@@ -20,6 +20,6 @@
       %h5
         = link_to article.title, article
         %br
-        %h5.muted= simple_format article.body[0...212] + "..."
+        %h5.muted= truncate(strip_tags(article.body), length:212)
         %h5= time_ago_in_words(article.created_at) + " ago"
         %hr
