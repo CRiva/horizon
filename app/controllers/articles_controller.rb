@@ -61,7 +61,6 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     # same as new, just with a article that already existed.
-    @article = Article.new()
     @article.title = article_params[:title]
     @article.body  = article_params[:body]
     @article.author_id = article_params[:author_id]
