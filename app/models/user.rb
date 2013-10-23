@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     if self.page
       Page.find(self.page).name
     else
-      return "News"
+      return ""
     end
   end
 
