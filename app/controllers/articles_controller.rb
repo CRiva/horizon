@@ -34,7 +34,18 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     # saves article created in new form
-    @article = Article.new(article_params)
+    #  article_params[:author_name] = User.find(article_params[:author_id])
+    puts "==========================================================="
+    puts article_params.inspect
+    puts "==========================================================="
+    @article = Article.new()
+    @article.title = article_params[:title]
+    @article.body  = article_params[:body]
+    @article.author_id = article_params[:author_id]
+    @article.author_name = User.find(article_params[:author_id])
+    @article.published = article_params[:published]
+    @article.page = article_params[:page]
+
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -80,6 +91,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :photo, :page, :published, :author_id)
+      params.require(:article).permit(:title, :body, :photo, :page, :published, :author_id, :author_name, :due_date)
     end
 end

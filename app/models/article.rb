@@ -19,6 +19,7 @@ class Article < ActiveRecord::Base
   end
 
   belongs_to :pages
+
   # NOTE: might need to update sizes as the design has changed.
   has_attached_file :photo, styles: {large: "500x500>", medium: "300x300#", thumb: "100x100#" }
   validates :page, :title, :body, :author_id, presence: true
@@ -34,14 +35,5 @@ class Article < ActiveRecord::Base
     else
       return self.page
     end
-  end
-
-  def author_name
-      if User.exists?(self.author_id)
-	User.find(self.author_id).name
-    else
-      'NA'
-    end
-
   end
 end

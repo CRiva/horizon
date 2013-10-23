@@ -14,7 +14,7 @@
     = f.hidden_field :body
     = f.file_field :photo
     = f.input :author_id, collection: User.all # User.where(page: current_user.page)
-    = f.input :due_date
+    = f.hidden_field :author_name
     = f.input :published
 
   .form-actions
@@ -31,5 +31,5 @@
     if($("#article_title").val() != ""){
       $("#article_the_title").html($("#article_title").val());
       $("#article_content").html($("#article_body").val());
-    }   
+    }
   });

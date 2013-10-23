@@ -29,5 +29,7 @@
 
 
 TODO
-        fix funny fonts and colors.
-        make other users pages invisible.
+
+make author a text field.
+buff out panels for different roles.
+make people not automatically associated with news.
