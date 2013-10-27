@@ -64,7 +64,6 @@ class ArticlesController < ApplicationController
     @article.title = article_params[:title]
     @article.body  = article_params[:body]
     @article.author_id = article_params[:author_id]
-    @article.author_name = User.find(article_params[:author_id]).name
     @article.published = article_params[:published]
     @article.page = article_params[:page]
 
