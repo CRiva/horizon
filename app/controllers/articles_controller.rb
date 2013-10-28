@@ -34,18 +34,8 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     # saves article created in new form
-    #  article_params[:author_name] = User.find(article_params[:author_id])
-    puts "==========================================================="
-    puts article_params.inspect
-    puts "==========================================================="
-    @article = Article.new()
-    @article.title = article_params[:title]
-    @article.body  = article_params[:body]
-    @article.author_id = article_params[:author_id]
+    @article = Article.new(article_params)
     @article.author_name = User.find(article_params[:author_id]).name
-    @article.published = article_params[:published]
-    @article.page = article_params[:page]
-
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -60,16 +50,8 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    # same as new, just with a article that already existed.
-    @article.title = article_params[:title]
-    @article.body  = article_params[:body]
-    @article.author_id = article_params[:author_id]
-    @article.published = article_params[:published]
-    @article.page = article_params[:page]
-
     respond_to do |format|
-      if @article.save
-
+      if @article.update_attributes(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
