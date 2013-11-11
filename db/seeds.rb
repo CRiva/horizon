@@ -8,7 +8,7 @@
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
 
-roles = ["Admin", "Author", "Member", "Creative", "Moderator"]
+roles = ["Admin","Editor", "Author", "Member", "Creative", "Moderator"]
 
 while !roles.empty?
   r = Role.new
