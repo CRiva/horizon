@@ -3,11 +3,12 @@
     %br
       .row
         .span2
-          = image_tag user.avatar.url(:medium)
+          - if user.avatar.url != "blank_profile.png"
+            = image_tag user.avatar.url(:thumb)
           %br
           %br
           .btn-group
-            %a.btn.btn-primary{href: "#"}
+            %a.btn.btn-primary{href: url_for(edit_user_path(user))}
               %i.icon-user.icon-white
               = user.name
             %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}

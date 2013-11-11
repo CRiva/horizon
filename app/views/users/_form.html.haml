@@ -1,7 +1,7 @@
 = simple_form_for @user do |f|
   = f.input :name, placeholder: "name..."
-  = # %h4 Change Profile Picture
-  = # f.file_field :avatar # removed until implemented with strongparams
+  %h4 Change Profile Picture
+  = f.file_field :avatar # removed until implemented with strongparams
   %h4 Assign Pages
   %p= # f.collection_check_boxes :page, Page.all, :id, :name
   %p= f.input :page, collection: Page.all, include_blank: "None", default: current_user.page
