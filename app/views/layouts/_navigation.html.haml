@@ -4,18 +4,21 @@
       .span3= link_to image_tag(slide.photo.url(:medium)), slide
 .row
   .span9
-    %ul.nav.nav-tabs{style: "margin-top: 42px;"}
-      - Page.all.each do |page|
-        %li= link_to page.name, articles_path(page_id: page.id)
+    .navbar{style: "margin-top: 42px;"}  
+      .navbar-inverse
+        .navbar-inner  
+          %ul.nav
+            - Page.all.each do |page|
+              %li= link_to page.name, articles_path(page_id: page.id)
 
-      %li= link_to 'About', page_path('about')
+            %li= link_to 'About', page_path('about')
 
-      - if user_signed_in?
-        %li
-          = link_to "#{ current_user.email }", current_user
-          - if can? :create, Article
-            %li= link_to "Manage", users_path
-          %li= link_to "Log Out", destroy_user_session_path, method: :delete
-      - else
-        %li= link_to "Sign Up", new_user_registration_path
-        %li= link_to "Sign In", new_user_session_path
+            - if user_signed_in?
+              %li
+                = link_to "#{ current_user.email }", current_user
+                - if can? :create, Article
+                  %li= link_to "Manage", users_path
+                %li= link_to "Log Out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign Up", new_user_registration_path
+              %li= link_to "Sign In", new_user_session_path
