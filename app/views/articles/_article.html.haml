@@ -22,7 +22,9 @@
         %muted= User.find(article.author_id).name
         %i.icon-globe
       %strong= article.page_name
-      %i.icon-time
+      %i.icon-time  
+      %muted= "approximately " + article.read_time.to_s + " minutes to read"
+      %i.icon-calendar
       %muted= time_ago_in_words(article.created_at) + " ago"
       .pull-right
         =  article.comments.length.to_s
