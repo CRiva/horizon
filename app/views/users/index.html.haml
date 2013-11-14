@@ -5,6 +5,8 @@
         .span2
           - if user.avatar.url != "blank_profile.png"
             = image_tag user.avatar.url(:thumb)
+          - else 
+            = image_tag "blank_profile_thumb.png"
           %br
           %br
           .btn-group
