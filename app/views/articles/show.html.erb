@@ -38,6 +38,14 @@
   <div class="Column2"></div>
 
 <div class="span9">
+  <% if User.find(@article.author_id).avatar.url != "blank_profile.png" %>
+  <%= image_tag User.find(@article.author_id).avatar.url(:icon) %>
+  <% end %>
+  <%= "Written by: " + User.find(@article.author_id).name %>
+  <hr>
+</div>
+
+<div class="span9">
   <%= social_share_button_tag(@article.title) %>
 
 <% if can? :update, @article %>
