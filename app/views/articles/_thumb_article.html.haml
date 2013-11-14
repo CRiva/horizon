@@ -21,7 +21,7 @@
     =  # link_to image_tag('missing.png', class: "img-circle"), article
     .caption{ style: "min-height: 100px;"}
       %h5.text-center
-        = link_to article.title, article
+        = link_to simple_format(article.title), article
         %br
         %h5.muted= truncate(strip_tags(article.body), length:212)
         %p.text-center

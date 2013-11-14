@@ -3,7 +3,7 @@
   - if article.photo.file?
     .span2= link_to image_tag(article.photo.url(:thumb), class: "img-circle"), article
     .span6
-      %h3= link_to article.title, article
+      %h3= link_to simple_format(article.title), article
       %i.icon-user
       - if User.find_by_id(article.author_id)
         %muted= User.find(article.author_id).name
@@ -16,7 +16,7 @@
         %i.icon-comment
   - else
     .span8
-      %h3= link_to article.title, article
+      %h3= link_to simple_format(article.title), article
       %i.icon-user
       - if User.find_by_id(article.author_id)
         %muted= User.find(article.author_id).name

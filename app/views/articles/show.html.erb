@@ -4,7 +4,7 @@
   <%= image_tag @article.photo.url(:large), class: "img-polaroid" %>
 <% end %>
 <h2>
-  <%= @article.title %>
+  <%= simple_format(@article.title) %>
 </h2>
 
 <script type="text/javascript">
@@ -33,15 +33,18 @@
 </style>
 
   <div id="data" class="Column1">
-  <%= simple_format @article.body %>
+  <%= simple_format(@article.body) %>
   </div>
   <div class="Column2"></div>
 
 <div class="span9">
-  <% if User.find(@article.author_id).avatar.url != "blank_profile.png" %>
-  <%= image_tag User.find(@article.author_id).avatar.url(:icon) %>
+  <% unless @article.author_id == nil %>
+    <% if User.find(@article.author_id).avatar.url != "blank_profile.png" %>
+      <%= image_tag User.find(@article.author_id).avatar.url(:icon) %>
+    <% end %>
+    <%= "Written by: " + User.find(@article.author_id).name %>
   <% end %>
-  <%= "Written by: " + User.find(@article.author_id).name %>
+
   <hr>
 </div>
 
@@ -49,8 +52,8 @@
   <%= social_share_button_tag(@article.title) %>
 
 <% if can? :update, @article %>
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete %>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+  <%= link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete %>
 <% end %>
 
 <h4> comments </h4>

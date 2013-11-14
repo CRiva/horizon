@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   def index
     # get the articles for that page (i.e. news, sports)
     section_articles = Article.published.where(page: params[:page_id])
-    @articles = section_articles.page(params[:page]).per(10)
+    @articles = section_articles.order('created_at DESC').page(params[:page]).per(10)
     # do different formatting.
     respond_to do |format|
       format.html # index.hmtl.haml
