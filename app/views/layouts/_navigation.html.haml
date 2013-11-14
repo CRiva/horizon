@@ -7,6 +7,8 @@
     .navbar{style: "margin-top: 42px;"}
       .navbar-inner  
         %ul.nav
+          %li= link_to  "Horizon", root_path, {class: "brand"}
+
           - Page.all.each do |page|
             %li= link_to page.name, articles_path(page_id: page.id)
         %ul.nav.pull-right
