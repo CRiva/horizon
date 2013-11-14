@@ -3,19 +3,15 @@
 
   .form-inputs
 
-    = f.input :page, collection: Page.all
+    = f.file_field :photo
     %section
-      %header{contenteditable:"true", class:"header", id:"article_the_title"}
+      %header{contenteditable:"false", class:"header", id:"article_the_title"}
         Title...
       %hr
-      %article{contenteditable:"true", class:"content", id:"article_content"}
+      %article{contenteditable:"false", class:"content", id:"article_content"}
         %p Body...
     = f.hidden_field :title
     = f.hidden_field :body
-    = f.file_field :photo
-    = f.input :author_id, collection: User.all # User.where(page: current_user.page)
-    = f.input :due_date
-    = f.input :published
 
   .form-actions
     = f.button :submit
