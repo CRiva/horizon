@@ -29,11 +29,16 @@ group :development do
   gem 'html2haml'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
+  gem 'turn'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+
 end
 group :development, :test do
   gem 'thin'
 end
 group :production do
-  gem 'unicorn'
+  gem 'thin'
 
 end

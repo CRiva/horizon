@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user.name = params[:user][:name]
     @user.role_ids = params[:user][:role_ids]
     @user.page = params[:user][:page]
-    #@user.avatar = params[:user][:avatar] # removed until implemented with strong params
+    @user.avatar = params[:user][:avatar] # removed until implemented with strong params
     if @user.role_ids == []
       @user.role_ids = [3] # to default to member if no id
     end
