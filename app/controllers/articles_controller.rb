@@ -52,6 +52,8 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update_attributes(article_params)
+        @article.author_name = User.find(@article.author_id).name
+        @article.save
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
