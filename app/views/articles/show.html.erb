@@ -38,11 +38,7 @@
   <div class="Column2"></div>
 
 <div class="span9">
-  <% unless @article.author_id == nil %>
-    <% if User.find(@article.author_id).avatar.url != "blank_profile.png" %>
-      <%= image_tag User.find(@article.author_id).avatar.url(:icon) %>
-    <% end %>
-    <%= "Written by: " + User.find(@article.author_id).name %>
+    <%= "Written by: " + @article.author_name %>
   <% end %>
 
   <hr>
@@ -57,8 +53,12 @@
 <% end %>
 
 <h4> comments </h4>
+<% if @article.comments.length > 1 %>
 <% @article.comments.each do |comment| %>
   <%= render "articles/comment", comment: comment %>
+<% end %>
+<% else %>
+<lead> Be The first to comment. </lead>
 <% end %>
 <%= form_for([@article, @comment]) do |f| %>
   <% if !current_user %>

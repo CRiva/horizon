@@ -39,6 +39,11 @@ class Article < ActiveRecord::Base
   def read_time
     # approximate cuz we don't strip html tags from the body
     # read time in minutes is word count / 150 (average words per minute for a non-dyslexic college student)
-    self.body.split.count / 150
+    read_time = (self.body.split.count / 150)
+    if read_time > 1.0
+      return (read_time + "minutes to read")
+    else
+      return "less than a minute to read."
+    end
   end  
 end

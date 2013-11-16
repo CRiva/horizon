@@ -7,8 +7,8 @@
       %i.icon-user
       - if User.find_by_id(article.author_id)
         %muted= User.find(article.author_id).name
-        %i.icon-globe
-      %strong= article.page_name
+      %i.icon-time  
+      %muted= article.read_time
       %i.icon-time
       %muted= time_ago_in_words(article.created_at) + " ago"
       .pull-right
@@ -20,10 +20,8 @@
       %i.icon-user
       - if User.find_by_id(article.author_id)
         %muted= User.find(article.author_id).name
-        %i.icon-globe
-      %strong= article.page_name
       %i.icon-time  
-      %muted= "approximately " + article.read_time.to_s + " minutes to read"
+      %muted= article.read_time.to_s
       %i.icon-calendar
       %muted= time_ago_in_words(article.created_at) + " ago"
       .pull-right

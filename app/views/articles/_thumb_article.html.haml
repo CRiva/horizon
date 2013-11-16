@@ -8,7 +8,7 @@
         %h5.muted= truncate(strip_tags(article.body), length:40)
         %p.text-center
           %i.icon-time  
-          %muted= "approximately " + article.read_time.to_s + " minutes to read"
+          %muted= article.read_time
           %br
           %i.icon-calendar
           %muted= time_ago_in_words(article.created_at) + " ago"
@@ -26,7 +26,7 @@
         %h5.muted= truncate(strip_tags(article.body), length:212)
         %p.text-center
           %i.icon-time  
-          %muted= "approximately " + article.read_time.to_s + " minutes to read"
+          %muted= article.read_time
           %br
           %i.icon-calendar
           %muted= time_ago_in_words(article.created_at) + " ago"
