@@ -10,7 +10,10 @@
           %li= link_to  "Horizon", root_path, {class: "brand"}
 
           - Page.all.each do |page|
-            %li= link_to page.name, articles_path(page_id: page.id)
+            - if current_page?(articles_path(page_id: page.id))
+              %li.active= link_to page.name, articles_path(page_id: page.id)
+            - else
+              %li= link_to page.name, articles_path(page_id: page.id)
         %ul.nav.pull-right
           %li.divider-vertical
           %li.dropdown
