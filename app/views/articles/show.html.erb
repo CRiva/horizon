@@ -4,7 +4,7 @@
   <%= image_tag @article.photo.url(:large), class: "img-polaroid" %>
 <% end %>
 <h2>
-  <%= @article.title %>
+  <%= simple_format(@article.title) %>
 </h2>
 
 <script type="text/javascript">
@@ -33,34 +33,22 @@
 </style>
 
   <div id="data" class="Column1">
-  <%= simple_format @article.body %>
+  <%= simple_format(@article.body) %>
   </div>
   <div class="Column2"></div>
+
+<div class="span9">
+    <%= "Written by: " + @article.author_name %>
+
+  <hr>
+</div>
 
 <div class="span9">
   <%= social_share_button_tag(@article.title) %>
 
 <% if can? :update, @article %>
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete %>
-<% end %>
-
-<h4> comments </h4>
-<% @article.comments.each do |comment| %>
-  <%= render "articles/comment", comment: comment %>
-<% end %>
-<%= form_for([@article, @comment]) do |f| %>
-  <% if !current_user %>
-    <%= link_to "Sign In", new_user_session_path %>
-  <% elsif current_user.name == nil %>
-      <%= link_to "Who are you? (you must set a user name before commenting)", current_user %>
-  <% else %>
-    <div class="field">
-      <strong> <%= current_user.name %> </strong>
-      <%= f.text_area :body, placeholder: "Comment..." %>
-    </div>
-    <p><%= f.submit %></p>
-  <% end %>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+  <%= link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete %>
 <% end %>
 </div>
 

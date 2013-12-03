@@ -3,12 +3,12 @@
   - if article.photo.file?
     .span2= link_to image_tag(article.photo.url(:thumb), class: "img-circle"), article
     .span6
-      %h3= link_to article.title, article
+      %h3= link_to simple_format(article.title), article
       %i.icon-user
       - if User.find_by_id(article.author_id)
         %muted= User.find(article.author_id).name
-        %i.icon-globe
-      %strong= article.page_name
+      %i.icon-time  
+      %muted= article.read_time
       %i.icon-time
       %muted= time_ago_in_words(article.created_at) + " ago"
       .pull-right
@@ -16,13 +16,13 @@
         %i.icon-comment
   - else
     .span8
-      %h3= link_to article.title, article
+      %h3= link_to simple_format(article.title), article
       %i.icon-user
       - if User.find_by_id(article.author_id)
         %muted= User.find(article.author_id).name
-        %i.icon-globe
-      %strong= article.page_name
-      %i.icon-time
+      %i.icon-time  
+      %muted= article.read_time.to_s
+      %i.icon-calendar
       %muted= time_ago_in_words(article.created_at) + " ago"
       .pull-right
         =  article.comments.length.to_s

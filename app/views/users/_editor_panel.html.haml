@@ -12,7 +12,7 @@
         = # %strong Stage
       - @unpub_articles.each do |article|
         %tr
-          %td= link_to  article.title, edit_article_path(article)
+          %td= link_to  simple_format(article.title), edit_article_path(article)
           - if User.exists?(article.author_id)
             %td= User.find(article.author_id).name
           - else

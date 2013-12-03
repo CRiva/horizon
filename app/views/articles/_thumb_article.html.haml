@@ -2,13 +2,16 @@
   .span3
     = link_to image_tag(article.photo.url(:medium)), article
     .caption{ style: "min-height: 100px;"}
-      %h5
+      %h5.text-center
         = link_to article.title, article
         %br
-        %strong= article.author_name
-        %br
-        %small.muted= article.page_name
-        %small.muted= time_ago_in_words(article.created_at) + " ago"
+        %h5.muted= truncate(strip_tags(article.body), length:40)
+        %p.text-center
+          %i.icon-time
+          %muted= article.read_time 
+          %br
+          %i.icon-calendar
+          %muted= time_ago_in_words(article.created_at) + " ago"
         %hr
 
 - else
@@ -17,9 +20,14 @@
     %h3.text-center= article.author_name
     =  # link_to image_tag('missing.png', class: "img-circle"), article
     .caption{ style: "min-height: 100px;"}
-      %h5
-        = link_to article.title, article
+      %h5.text-center
+        = link_to simple_format(article.title), article
         %br
         %h5.muted= truncate(strip_tags(article.body), length:212)
-        %h5= time_ago_in_words(article.created_at) + " ago"
+        %p.text-center
+          %i.icon-time
+          %muted= article.read_time 
+          %br
+          %i.icon-calendar
+          %muted= time_ago_in_words(article.created_at) + " ago"
         %hr
