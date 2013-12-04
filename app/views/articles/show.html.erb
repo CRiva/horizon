@@ -38,8 +38,9 @@
   <div class="Column2"></div>
 
 <div class="span9">
+  <% if @article.author_name != nil %>
     <%= "Written by: " + @article.author_name %>
-
+  <% end %>
   <hr>
 </div>
 
