@@ -16,12 +16,11 @@
 
 - else
   .span3
-    %h1.strong.text-center= article.page_name
-    %h3.text-center= article.author_name
-    =  # link_to image_tag('missing.png', class: "img-circle"), article
+    %h3.strong.text-center= link_to simple_format(article.title), article
+    %h5.text-center= article.page_name
     .caption{ style: "min-height: 100px;"}
       %h5.text-center
-        = link_to simple_format(article.title), article
+        = article.author_name
         %br
         %h5.muted= truncate(strip_tags(article.body), length:212)
         %p.text-center
