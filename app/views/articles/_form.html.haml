@@ -7,6 +7,7 @@
         .span3
           = f.input :page, collection: Page.all
         .span3
+          = f.input :author_name
           = f.input :author_id, collection: User.where(page: current_user.page)
     - if can? :edit, @article
       .row
