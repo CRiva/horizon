@@ -35,7 +35,8 @@ class ArticlesController < ApplicationController
   def create
     # saves article created in new form
     @article = Article.new(article_params)
-    @article.author_name = User.find(article_params[:author_id]).name
+    # @article.author_name = User.find(article_params[:author_id]).name
+    @article.author_name = article_params[:author_name]
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -52,7 +53,8 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update_attributes(article_params)
-        @article.author_name = User.find(@article.author_id).name
+        # @article.author_name = User.find(@article.author_id).name
+        @article.author_name = article_params[:author_name]
         @article.save
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { head :no_content }

@@ -1,31 +1,31 @@
-- if  !article.photo.url.end_with?('/missing.png')
-      = image_tag(article.photo.url(:large))
-
+- if  !@article.photo.url.end_with?('/missing.png')
+  = image_tag(@article.photo.url(:large))
+  
 %h2= simple_format(@article.title)
-
+  
 %p= simple_format(@article.body)
-
+  
 %p= @article.author_name
 
 .span9= social_share_button_tag(@article.title)
 
 
 -if can? :update, @article
-    = link_to 'Edit', edit_article_path(@article)
-    = link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete
+  = link_to 'Edit', edit_article_path(@article)
+  = link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete
 %h4 Comments
 - if @article.comments.length > 1
-    @article.comments.each do |comments|
-        = render "articles/comments", comment: comment
+  @article.comments.each do |comments|
+  = render "articles/comments", comment: comment
 - else
-    %lead Be the first to comment
+  %lead Be the first to comment
 
 = form_for([@article, @comment]) do |f|
-    -if !current_user
-        = link_to "Sign In", new_user_session_path
-    -elsif current_user.name == nil
-        = link_to "Who are you (please set a name)", current_user
-    -else
-        = f.text_area :body, placeholder: "Comment..."
-        = f.submit
+  -if !current_user
+    = link_to "Sign In", new_user_session_path
+  -elsif current_user.name == nil
+    = link_to "Who are you (please set a name)", current_user
+  -else
+    = f.text_area :body, placeholder: "Comment..."
+    = f.submit
 
