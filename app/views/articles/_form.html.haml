@@ -11,6 +11,8 @@
     - if can? :edit, @article
       .row
         .span9
+          PHOTO UPLOAD: 
+          %br
           = f.file_field :photo
       = f.input :title
       = f.input :body
