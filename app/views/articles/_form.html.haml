@@ -12,19 +12,8 @@
       .row
         .span9
           = f.file_field :photo
-
-      %hr
-    %section
-      %header{contenteditable:"true", class:"header", id:"article_the_title"}
-        Title...
-      %br
-      %article{contenteditable:"true", class:"content", id:"article_content"}
-        %p Body...
-
-    = f.hidden_field :title
-    = f.hidden_field :body
-
-
+      = f.input :title
+      = f.input :body
 
   .form-actions
     - if can? :create, @article
