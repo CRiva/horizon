@@ -19,17 +19,3 @@
     - if can? :create, @article
       = f.input :published
     = f.button :submit
-
-:javascript
-  $(document).ready(function(){
-    $("input[name='commit']").button().click(function(){
-      $("#article_body").val($("#article_content").html());
-    })
-    $("input[name='commit']").button().click(function(){
-      $("#article_title").val($("#article_the_title").html());
-    })
-    if($("#article_title").val() != ""){
-      $("#article_the_title").html($("#article_title").val());
-      $("#article_content").html($("#article_body").val());
-    }
-  });
