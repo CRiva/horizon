@@ -4,7 +4,7 @@
 %h2= simple_format(@article.title)
 %small
   Views
-  = @article.impressionist_count
+  = @article.impressions_count
   | Read Time
   = @article.read_time
 
@@ -21,9 +21,9 @@
   = link_to 'Edit', edit_article_path(@article)
   = link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete
 %h4 Comments
-- if @article.comments.length > 1
-  @article.comments.each do |comments|
-  = render "articles/comments", comment: comment
+- if @article.comments.length > 0
+  - @article.comments.each do |comy|
+    = render "comment", comment: comy
 - else
   %lead Be the first to comment
 

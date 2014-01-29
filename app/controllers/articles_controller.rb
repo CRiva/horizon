@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  impressionist :actions=>[:show]
+  # impressionist :actions=>[:show]
 
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show # make a new comment to show at the bottom of the page.
+    impressionist(@article)
     @comment = Comment.new(article: @article)
   end
 

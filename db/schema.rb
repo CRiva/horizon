@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129041109) do
+ActiveRecord::Schema.define(version: 20140129050212) do
 
   create_table "artices_pages", id: false, force: true do |t|
     t.integer "page_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140129041109) do
     t.datetime "due_date"
     t.string   "aasm_state",         default: "new"
     t.string   "author_name"
+    t.integer  "impressions_count",  default: 0
   end
 
   create_table "comments", force: true do |t|

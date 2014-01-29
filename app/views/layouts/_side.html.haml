@@ -4,3 +4,14 @@
   .span2
     = link_to image_tag('facebook.png'), "https://www.facebook.com/westmont.horizon", :target => '_blank'
     = link_to image_tag('twitter.png'), "https://twitter.com/westmonthorizon", :target => '_blank'
+    %hr
+  .span3
+    %br
+    %lead Trending
+    %hr
+    %ol
+      - Article.order("impressions_count DESC").limit(5).each do |article|
+        %li
+          = link_to article.title, article
+          %small
+            %i= "by " + article.author_name
