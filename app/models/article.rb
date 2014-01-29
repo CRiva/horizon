@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  is_impressionable
+
   include AASM
   aasm do
     state :new, initial: true

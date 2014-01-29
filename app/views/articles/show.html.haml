@@ -2,7 +2,14 @@
   = image_tag(@article.photo.url(:large))
   
 %h2= simple_format(@article.title)
-  
+%small
+  Views
+  = @article.impressionist_count
+  | Read Time
+  = @article.read_time
+
+%hr
+
 %p= simple_format(@article.body)
   
 %p= @article.author_name
