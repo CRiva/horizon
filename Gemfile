@@ -20,6 +20,7 @@ gem 'kaminari'
 gem 'social-share-button'
 gem 'aasm'
 gem 'koala', '~> 1.8.0rc1'
+gem 'impressionist'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby

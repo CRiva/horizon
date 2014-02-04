@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  is_impressionable :counter_cache => true, :column_name => :impressions_count
+
   include AASM
   aasm do
     state :new, initial: true

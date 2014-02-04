@@ -2,7 +2,14 @@
   = image_tag(@article.photo.url(:large))
   
 %h2= simple_format(@article.title)
-  
+%small
+  Views
+  = @article.impressions_count
+  | Read Time
+  = @article.read_time
+
+%hr
+
 %p= simple_format(@article.body)
   
 %p= @article.author_name
@@ -15,8 +22,8 @@
   = link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete
 %h4 Comments
 - if @article.comments.length > 0
-  - @article.comments.each do |comment|
-    = render "articles/comment", comment: comment
+  - @article.comments.each do |comy|
+    = render "comment", comment: comy
 - else
   %lead Be the first to comment
 
