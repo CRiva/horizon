@@ -10,7 +10,7 @@
     %lead Trending
     %hr
     %ol
-      - Article.order("impressions_count DESC").limit(5).each do |article|
+      - Article.published.where("created_at >= ?", 1.week.ago.utc).order("impressions_count DESC").limit(5).each do |article|
         %li
           = link_to article.title, article
           %small
