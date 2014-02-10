@@ -9,7 +9,12 @@ class ArticlesController < ApplicationController
   def index
     # get the articles for that page (i.e. news, sports)
     section_articles = Article.published.where(page: params[:page_id])
-    @articles = section_articles.order('created_at DESC').page(params[:page]).per(10)
+    unless params[:search].nil?
+      @articles = Article.where("author_name LIKE ? OR title LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
+    else 
+      @articles = section_articles.order('created_at DESC').page(params[:page]).per(10)
+    end 
+    # @articles = Article.search(params[:search]) # .order('created_at DESC')
     # do different formatting.
     respond_to do |format|
       format.html # index.hmtl.haml

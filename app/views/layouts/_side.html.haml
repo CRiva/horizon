@@ -6,9 +6,16 @@
     = link_to image_tag('twitter.png'), "https://twitter.com/westmonthorizon", :target => '_blank'
     %hr
   .span3
-    %br
-    %lead Trending
+    = form_tag articles_path, :method => 'get', class: 'form-search' do
+      %p
+        = text_field_tag :search, params[:search], class: 'input-medium search-query'
+        = submit_tag "Search", :name => nil, class: 'btn'
+      -# %input.input-medium.search-query{type: "text"}/
+      -# %button.btn{type: "submit"} Search
     %hr
+  .span3
+    %lead Trending Articles:
+    %br
     %ol
       - Article.order("impressions_count DESC").limit(5).each do |article|
         %li

@@ -30,6 +30,15 @@ class Article < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
 
+  def self.search(search)
+    if search
+      q = "%#{search}%"
+      where("author_name LIKE ? OR title LIKE ?", q, q)
+    else
+      where(published: true)
+    end
+  end
+
   # dirty, dirty hack...
   def page_name
     if self.page
