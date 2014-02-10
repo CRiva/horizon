@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
     else 
       @articles = section_articles.order('created_at DESC').page(params[:page]).per(10)
     end 
-    # @articles = Article.search(params[:search]) # .order('created_at DESC')
     # do different formatting.
     respond_to do |format|
       format.html # index.hmtl.haml
