@@ -7,13 +7,6 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
-        = javascript_include_tag "editor"
-        = javascript_include_tag "ui"
-        = javascript_include_tag "utils"
-        = javascript_include_tag "libs/Blob"
-        = javascript_include_tag "libs/FileSaver"
-        = javascript_include_tag "libs/fullScreen"
-        = javascript_include_tag "libs/Blob"
   %body
     %header
       .container
@@ -21,7 +14,7 @@
       .container
         .row
           = render 'layouts/messages'
-          .span3
+          .col-md-3
             = render 'layouts/side'
           .span9
             = render 'layouts/navigation'
