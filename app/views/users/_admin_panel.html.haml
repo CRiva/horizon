@@ -1,4 +1,5 @@
-%h3= "Admin Panel"
+%h3 Admin Panel
+%h4= link_to "Manage", users_path
 %table{:class => "table table-hover"}
   %thead
     %tr
@@ -12,7 +13,7 @@
       = # %strong decision
       - @new_articles.each do |article|
         %tr
-          %td= link_to  simple_format(article.title), edit_article_path(article)
+          %td= link_to simple_format(article.title), edit_article_path(article)
           %td= article.page_name
           %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
           %td

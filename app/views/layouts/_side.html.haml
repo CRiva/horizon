@@ -1,14 +1,12 @@
 .row
   .btn-group
     - if user_signed_in?
-      %button.btn.btn-default= link_to "Profile", users_path
-      - if can? :manage, Users
-        %button.btn.btn-default= link_to "Manage", users_path
-      %button.btn.btn-default= link_to "Profile", users_path
+      %button.btn.btn-default= link_to "Profile", user_path(current_user)
       %button.btn.btn-default= link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
-      %button.btn.btn-default= link_to "Sign In", new_user_session_path
-      %button.btn.btn-default= link_to "Sign Up", new_user_registration_path
+      %button.btn.btn-default{"data-target" => "#signIn", "data-toggle" => "modal"} Sign In
+      %button.btn.btn-default{"data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
+      
 %br
 .row
   = form_tag articles_path, :method => 'get', class: 'form-search' do

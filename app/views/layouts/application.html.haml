@@ -13,21 +13,15 @@
     %main{:role => "main"}
       .container
         .row
+          = render 'layouts/messages'
+        .row
           .col-md-12
             = render 'layouts/navigation'
-          .col-md-9  
-            = render 'layouts/messages'
+        .row
+          .col-md-9
+            = yield
           .col-md-3
             = render 'layouts/side'
-            %button.btn.btn-primary.btn-lg{"data-target" => "#signUp", "data-toggle" => "modal"}
-              Sign Up
-            %button.btn.btn-primary.btn-lg{"data-target" => "#signIn", "data-toggle" => "modal"}
-              Sign In
-
-          
-        = yield
-                      
-
     %footer
       = render 'layouts/footer'
 
@@ -38,19 +32,17 @@
       .modal-header
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
         %h4#signUpLabel.modal-title Sign Up
-      .modal-body
-        = simple_form_for(:user, :url => user_session_path) do |f|
+      = simple_form_for(:user, :url => user_registration_path) do |f|
+        .modal-body
           = f.error_notification
-          .form-inputs
+          .form-group
             = f.input :name, required: true
             = f.input :email, :required => true
             = f.input :password, :required => true
             = f.input :password_confirmation, :required => true
-          .form-actions
-            = f.button :submit, "Sign up"
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
-        %button.btn.btn-primary{type: "button"} Save changes
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+          = f.button :submit, "Sign Up", class: 'btn btn-primary'
 
 #signIn.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signInLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
@@ -58,17 +50,25 @@
       .modal-header
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
         %h4#signInLabel.modal-title Sign In
-      .modal-body
-        = simple_form_for(:user, :url => new_user_session_path) do |f|
+      = simple_form_for(:user, :url => user_session_path) do |f|
+        .modal-body
           = f.error_notification
-          .form-inputs
-            = f.input :name, required: true
+          .form-group
             = f.input :email, :required => true
             = f.input :password, :required => true
-            = f.input :password_confirmation, :required => true
-          .form-actions
-            = f.button :submit, "Sign up"
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+          = f.button :submit, "Sign In", class: 'btn btn-primary'
 
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
-        %button.btn.btn-primary{type: "button"} Save changes
+
+
+
+
+
+
+
+
+
+
+
+
