@@ -1,31 +1,35 @@
 .row
-  .span3= link_to image_tag('h.png'), root_path
-  .span3= link_to image_tag('subh.png'), root_path
-  .span2
-    = link_to image_tag('facebook.png'), "https://www.facebook.com/westmont.horizon", :target => '_blank'
-    = link_to image_tag('twitter.png'), "https://twitter.com/westmonthorizon", :target => '_blank'
-    %hr
-  .span3
-    = form_tag articles_path, :method => 'get', class: 'form-search' do
-      %p
-        = text_field_tag :search, params[:search], class: 'input-medium search-query'
-        = submit_tag "Search", :name => nil, class: 'btn'
-      -# %input.input-medium.search-query{type: "text"}/
-      -# %button.btn{type: "submit"} Search
-    %hr
-  .span3
-    %lead Trending Articles:
-    %br
-    %ol
-      - Article.published.where("created_at <= ?", 1.week.ago.utc).order("impressions_count DESC").limit(5).each do |article|
-        %li
+  .btn-group
+    - if user_signed_in?
+      %button.btn.btn-default= link_to "Profile", users_path
+      - if can? :manage, Users
+        %button.btn.btn-default= link_to "Manage", users_path
+      %button.btn.btn-default= link_to "Profile", users_path
+      %button.btn.btn-default= link_to "Sign Out", destroy_user_session_path, method: :delete
+    - else
+      %button.btn.btn-default= link_to "Sign In", new_user_session_path
+      %button.btn.btn-default= link_to "Sign Up", new_user_registration_path
+%br
+.row
+  = form_tag articles_path, :method => 'get', class: 'form-search' do
+    .input-group
+      = text_field_tag :search, params[:search], class: 'form-control'
+      %span.input-group-btn
+        = submit_tag 'search', :name => nil, class: 'btn btn-default'
+.row
+  %h3 
+    Trending Articles
+    %i.glyphicon.glyphicon-fire
+  %ol
+    - Article.published.where("created_at <= ?", 1.week.ago.utc).order("impressions_count DESC").limit(5).each do |article|
+      %li
+        %p
           = link_to article.title, article
           %small
             %i= "by " + article.author_name
-    %hr
-  .span3
-    Twitter Feed
-    %a.twitter-timeline{"data-widget-id" => "430531216178020353", :href => "https://twitter.com/WestmontHorizon"} Tweets by @WestmontHorizon
+.row
+  Twitter Feed
+  %a.twitter-timeline{"data-widget-id" => "430531216178020353", :href => "https://twitter.com/WestmontHorizon"} Tweets by @WestmontHorizon
 
 
 :javascript

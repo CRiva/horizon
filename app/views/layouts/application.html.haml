@@ -7,18 +7,68 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
-  %body
+  %body{ style: 'padding-top: 100px;' }
     %header
       .container
     %main{:role => "main"}
       .container
         .row
-          = render 'layouts/messages'
+          .col-md-12
+            = render 'layouts/navigation'
+          .col-md-9  
+            = render 'layouts/messages'
           .col-md-3
             = render 'layouts/side'
-          .span9
-            = render 'layouts/navigation'
-            = yield
+            %button.btn.btn-primary.btn-lg{"data-target" => "#signUp", "data-toggle" => "modal"}
+              Sign Up
+            %button.btn.btn-primary.btn-lg{"data-target" => "#signIn", "data-toggle" => "modal"}
+              Sign In
+
+          
+        = yield
+                      
 
     %footer
       = render 'layouts/footer'
+
+
+#signUp.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signUpLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
+        %h4#signUpLabel.modal-title Sign Up
+      .modal-body
+        = simple_form_for(:user, :url => user_session_path) do |f|
+          = f.error_notification
+          .form-inputs
+            = f.input :name, required: true
+            = f.input :email, :required => true
+            = f.input :password, :required => true
+            = f.input :password_confirmation, :required => true
+          .form-actions
+            = f.button :submit, "Sign up"
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+        %button.btn.btn-primary{type: "button"} Save changes
+
+#signIn.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signInLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
+        %h4#signInLabel.modal-title Sign In
+      .modal-body
+        = simple_form_for(:user, :url => new_user_session_path) do |f|
+          = f.error_notification
+          .form-inputs
+            = f.input :name, required: true
+            = f.input :email, :required => true
+            = f.input :password, :required => true
+            = f.input :password_confirmation, :required => true
+          .form-actions
+            = f.button :submit, "Sign up"
+
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+        %button.btn.btn-primary{type: "button"} Save changes
