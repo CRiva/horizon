@@ -1,10 +1,26 @@
 %h3 Admin Panel
-%h4= link_to "Manage", users_path
+%h4
+  %i.glyphicon.glyphicon-wrench
+  = link_to "Manage Users", users_path
+
+.row
+  %h2 Week's Stats
+  .col-md-2.thumbnail
+    %h4.text-center Article views
+    %h3.text-center= Impression.where(impressionable_type: 'Article').count
+  .col-md-2.thumbnail
+    %h4.text-center Hits
+    %h3.text-center
+      = Impression.where("created_at >= ?", Time.zone.now.beginning_of_week).where(impressionable_type: 'Visitor').count
+  .col-md-2.thumbnail
+    %h4.text-center Active Users
+    %h3.text-center= User.where("last_sign_in_at >= ?", Time.zone.now.beginning_of_week).count
+
 %table{:class => "table table-hover"}
   %thead
     %tr
       %th
-        %strong Pitch
+        %strong Title
       %th
         %strong Page
       %th

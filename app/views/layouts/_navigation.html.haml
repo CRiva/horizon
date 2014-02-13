@@ -5,4 +5,4 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         - Page.all.each do |page|
-          %li.navbar-brand= link_to page.name, articles_path(id: page)
+          %li.navbar-brand= link_to page.name, articles_path(page_id: page.id)

@@ -1,7 +1,7 @@
 .row
   .btn-group
     - if user_signed_in?
-      %button.btn.btn-default= link_to "Profile", user_path(current_user)
+      %button.btn.btn-default= link_to current_user.name.capitalize, user_path(current_user)
       %button.btn.btn-default= link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
       %button.btn.btn-default{"data-target" => "#signIn", "data-toggle" => "modal"} Sign In
@@ -19,14 +19,13 @@
     Trending Articles
     %i.glyphicon.glyphicon-fire
   %ol
-    - Article.published.where("created_at <= ?", 1.week.ago.utc).order("impressions_count DESC").limit(5).each do |article|
+    - Article.published.where("created_at >= ?", Time.zone.now.beginning_of_day).order("impressions_count DESC").limit(5).each do |article|
       %li
         %p
           = link_to article.title, article
           %small
             %i= "by " + article.author_name
 .row
-  Twitter Feed
   %a.twitter-timeline{"data-widget-id" => "430531216178020353", :href => "https://twitter.com/WestmontHorizon"} Tweets by @WestmontHorizon
 
 
