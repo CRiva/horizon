@@ -14,7 +14,7 @@
 %hr
 .row
   .col-md-11
-    %p.lead.text-justify= @article.body
+    %p.lead.text-justify= simple_format(@article.body)
 
 .span9= social_share_button_tag(@article.title)
 

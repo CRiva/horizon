@@ -8,24 +8,24 @@
       %button.btn.btn-default{"data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
       
 %br
-.row
+.row.hidden-xs
   = form_tag articles_path, :method => 'get', class: 'form-search' do
     .input-group
       = text_field_tag :search, params[:search], class: 'form-control'
       %span.input-group-btn
         = submit_tag 'search', :name => nil, class: 'btn btn-default'
-.row
+.row.hidden-xs
   %h3 
     Trending Articles
     %i.glyphicon.glyphicon-fire
   %ol
-    - Article.published.where("created_at >= ?", Time.zone.now.beginning_of_day).order("impressions_count DESC").limit(5).each do |article|
+    - Article.published.where("created_at >= ?", Time.zone.now.beginning_of_week).order("impressions_count DESC").limit(5).each do |article|
       %li
         %p
           = link_to article.title, article
           %small
             %i= "by " + article.author_name
-.row
+.row.hidden-xs
   %a.twitter-timeline{"data-widget-id" => "430531216178020353", :href => "https://twitter.com/WestmontHorizon"} Tweets by @WestmontHorizon
 
 
