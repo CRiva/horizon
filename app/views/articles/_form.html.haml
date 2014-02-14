@@ -8,11 +8,11 @@
         .col-md-3
           = f.input :author_name, :as => :string
         .col-md-3
-          Photo: 
-          = f.file_field :photo
+          = f.input :title
       .row
         .col-md-12
-          = f.input :title
+          Photo: 
+          = f.file_field :photo
       .row
         .col-md-12
           = f.input :body

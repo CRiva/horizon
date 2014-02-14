@@ -1,11 +1,9 @@
-%h3= "Author Panel"
+%h3 My Articles
 %table{:class => "table table-hover"}
   %thead
     %tr
       %th
         %strong title
-      %th
-        %strong Due
       %th
         %strong Updated At
       %th
@@ -13,7 +11,4 @@
       - @my_articles.each do |article|
         %tr
           %td= link_to  simple_format(article.title), edit_article_path(article)
-          %td SOON
           %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
-          %td
-            = # .span.badge= article.aasm_state
