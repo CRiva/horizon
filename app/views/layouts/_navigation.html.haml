@@ -16,5 +16,7 @@
           %li.navbar-brand= link_to current_user.name.capitalize, user_path(current_user)
           %li.navbar-brand= link_to "Sign Out", destroy_user_session_path, method: :delete
         - else
-          %li.navbar-brand.pull-right{"data-target" => "#signIn", "data-toggle" => "modal"} Sign In
-          %li.navbar-brand.pull-right{"data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
+          %li
+            %a.navbar-brand{href: "#", "data-target" => "#signIn", "data-toggle" => "modal"} Sign In
+          %li
+            %a.navbar-brand{href: "#", "data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
