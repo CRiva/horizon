@@ -21,6 +21,8 @@ gem 'social-share-button'
 gem 'aasm'
 gem 'koala', '~> 1.8.0rc1'
 gem 'impressionist'
+gem 'thin'
+gem 'yaml_db'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby
@@ -35,12 +37,4 @@ group :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'guard-rspec'
-
-end
-group :development, :test do
-  gem 'thin'
-end
-group :production do
-  gem 'thin'
-
 end
