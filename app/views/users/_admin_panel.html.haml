@@ -8,14 +8,16 @@
   .col-md-2.thumbnail
     %h4.text-center Article views
     %h3.text-center= Impression.where(impressionable_type: 'Article').count
-  .col-md-2.thumbnail
+  .col-md-2.col-md-offset-1.thumbnail
     %h4.text-center Hits
     %h3.text-center
       = Impression.where("created_at >= ?", Time.zone.now.beginning_of_week).where(impressionable_type: 'Visitor').count
-  .col-md-2.thumbnail
+  .col-md-2.col-md-offset-1.thumbnail
     %h4.text-center Active Users
     %h3.text-center= User.where("last_sign_in_at >= ?", Time.zone.now.beginning_of_week).count
-
+  -# .col-md-2.col-md-offset-1.thumbnail
+    %h4.text-center Another Box
+    %h3.text-center Adam
 %table{:class => "table table-hover"}
   %thead
     %tr
