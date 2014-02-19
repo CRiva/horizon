@@ -15,9 +15,9 @@
   .col-md-2.col-md-offset-1.thumbnail
     %h4.text-center Active Users
     %h3.text-center= User.where("last_sign_in_at >= ?", Time.zone.now.beginning_of_week).count
-  -# .col-md-2.col-md-offset-1.thumbnail
-    %h4.text-center Another Box
-    %h3.text-center Adam
+  .col-md-2.col-md-offset-1.thumbnail
+    %h4.text-center New Articles
+    %h3.text-center= Article.published.where("created_at >= ?", Time.zone.now.beginning_of_week).count
 %table{:class => "table table-hover"}
   %thead
     %tr
