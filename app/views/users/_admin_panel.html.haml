@@ -7,7 +7,7 @@
   %h2 Week's Stats
   .col-md-2.thumbnail
     %h4.text-center Article views
-    %h3.text-center= Impression.where(impressionable_type: 'Article').count
+    %h3.text-center= Impression.where("created_at >= ?", Time.zone.now.beginning_of_week).where(impressionable_type: 'Article').count
   .col-md-2.col-md-offset-1.thumbnail
     %h4.text-center Hits
     %h3.text-center
@@ -18,6 +18,21 @@
   .col-md-2.col-md-offset-1.thumbnail
     %h4.text-center New Articles
     %h3.text-center= Article.published.where("created_at >= ?", Time.zone.now.beginning_of_week).count
+.row
+  %h2 All-Time Stats
+  .col-md-2.thumbnail
+    %h4.text-center Article views
+    %h3.text-center= Impression.where(impressionable_type: 'Article').count
+  .col-md-2.col-md-offset-1.thumbnail
+    %h4.text-center Hits
+    %h3.text-center
+      = Impression.where(impressionable_type: 'Visitor').count
+  .col-md-2.col-md-offset-1.thumbnail
+    %h4.text-center Active Users
+    %h3.text-center= User.count
+  .col-md-2.col-md-offset-1.thumbnail
+    %h4.text-center New Articles
+    %h3.text-center= Article.published.count
 %table{:class => "table table-hover"}
   %thead
     %tr
