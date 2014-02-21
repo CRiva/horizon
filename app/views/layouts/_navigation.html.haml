@@ -1,8 +1,8 @@
 .navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
-      %a{href: root_path}
-        %img{ondragstart: "return false", src: '/assets/subh.png'}
+      %a{href: root_path, ondragstart: "return false"}
+        = image_tag asset_path("subh.png")
       %button.navbar-toggle{"data-target" => "#navPage", "data-toggle" => "collapse", type: "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
