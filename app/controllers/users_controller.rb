@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-  end
+  def edit;  end
 
   def update # TODO shorten this.
     @user.name = params[:user][:name]
@@ -62,7 +61,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    f = params.require(:user).permit(:name, :email, :role_ids, :page, :avatar) # try user:{:role_ids} when everyting else is working.
-    puts f.inspect
+    params.require(:user).permit(:name, :email, :role_ids, :page, :avatar) # try user:{:role_ids} when everyting else is working.
   end
 end

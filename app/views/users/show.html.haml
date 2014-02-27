@@ -1,9 +1,21 @@
-= image_tag @user.avatar.url(:medium)
-
-%h2= @user.email
-- if current_user.id == @user.id
-  - if @user.name == nil
-    %h4= link_to "add name", edit_user_path
-  - else    
-    = link_to @user.name, edit_user_path
-    = render partial: "user_panel"
+.row
+  .col-md-4= image_tag @user.avatar.url(:medium), class: 'img-thumbnail'
+  .col-md-8
+    %h2= @user.email
+    %h4= @user.name
+    %p
+      = 'signed in: ' + @user.sign_in_count.to_s + ' times.'
+.row
+  .col-md-12
+    - if current_user.id == @user.id
+      - current_user.roles.each do |role|
+        - if role.name == "Admin"
+          = render 'admin_panel'
+        - elsif role.name == "Editor"
+          = render 'editor_panel'
+        - elsif role.name == "Author"
+          = render 'author_panel'
+        - elsif role.name == "Creative"
+          = render 'creative_panel'
+        - elsif role.name == "Member"
+          = render 'member_panel'

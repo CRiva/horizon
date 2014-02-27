@@ -1,4 +1,7 @@
 %h3= current_user.page_name + " Editor Panel"
+.row
+  .col-md-2
+    %a.btn.btn-primary{href: new_article_path}New Article
 %table{:class => "table table-hover"}
   %thead
     %tr
@@ -20,12 +23,8 @@
           %td= article.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime(" %B %d, %l:%M %p")
           %td
             = # .span.badge= article.aasm_state
-.row
-  .span2
-    = link_to 'New Article', new_article_path
-
 
 %h3= current_user.page_name + " Writers Panel"
 
 - User.where(page: current_user.page).each do |writter|
-  %li= writter.name
+  %span.label.label-default= writter.name

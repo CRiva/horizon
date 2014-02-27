@@ -1,38 +1,22 @@
 - if can? :manage, :all
   - @users.each do |user|
-    %br
-      .row
-        .span2
-          - if user.avatar.url != "blank_profile.png"
-            = image_tag user.avatar.url(:thumb)
-          - else 
-            = image_tag "blank_profile_thumb.png"
-          %br
-          %br
-          .btn-group
-            %a.btn.btn-primary{href: url_for(edit_user_path(user))}
-              %i.icon-user.icon-white
+    .row
+      .col-md-12
+        - if user.avatar.url != "blank_profile.png"
+          = image_tag user.avatar.url(:thumb)
+        - else 
+          = image_tag "blank_profile_thumb.png"
+        .btn-group
+          %button.btn.btn-default
+            = link_to user_path(user) do
+              %i.glyphicon.glyphicon-user
               = user.name
-            %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                %a{href: url_for(edit_user_path(user))}
-                  %i.icon-pencil
-                  \ Assign
-              %li
-                = link_to user, method: :delete, class: :destroy, confirm: "Are you sure?" do
-                  %i.icon-trash
-                  \ Delete
-        .span7
-          %h4
-            Email:
-            = user.email
-          %h4
-            Name:
-            = user.name
-          %h4
-            = user.page_name
-        
-      %hr
-
+                      
+          %button.btn.btn-default
+            = link_to edit_user_path(user) do
+              %i.glyphicon.glyphicon-edit
+              Edit
+          %button.btn.btn-default
+            = link_to user, method: :delete, class: :destroy, confirm: "Are you sure?" do
+              %i.glyphicon.glyphicon-trash
+              Delete

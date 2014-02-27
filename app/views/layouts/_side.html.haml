@@ -1,38 +1,26 @@
-.row
-  .span3= link_to image_tag('h.png'), root_path
-  .span3= link_to image_tag('subh.png'), root_path
-  .span2
-    = link_to image_tag('facebook.png'), "https://www.facebook.com/westmont.horizon", :target => '_blank'
-    = link_to image_tag('twitter.png'), "https://twitter.com/westmonthorizon", :target => '_blank'
-    %hr
-  .span3
-    = form_tag articles_path, :method => 'get', class: 'form-search' do
-      %p
-        = text_field_tag :search, params[:search], class: 'input-medium search-query'
-        = submit_tag "Search", :name => nil, class: 'btn'
-      -# %input.input-medium.search-query{type: "text"}/
-      -# %button.btn{type: "submit"} Search
-    %hr
-  .span3
-    %lead Trending Articles:
-    %br
-    %ol
-      - Article.published.where("created_at <= ?", 1.week.ago.utc).order("impressions_count DESC").limit(5).each do |article|
-        %li
+%br
+.row.hidden-xs
+  = form_tag articles_path, :method => 'get', class: 'form-search' do
+    .input-group
+      = text_field_tag :search, params[:search], class: 'form-control'
+      %span.input-group-btn
+        = submit_tag 'search', :name => nil, class: 'btn btn-default'
+.row.hidden-xs
+  %h3 
+    Trending Articles
+    %i.glyphicon.glyphicon-fire
+  %ol
+    - Article.published.where("created_at >= ?", Time.zone.now.beginning_of_week).order("impressions_count DESC").limit(5).each do |article|
+      %li
+        %p
           = link_to article.title, article
           %small
             %i= "by " + article.author_name
-    %hr
-  .span3
-    Twitter Feed
-    %a.twitter-timeline{"data-widget-id" => "430531216178020353", :href => "https://twitter.com/WestmontHorizon"} Tweets by @WestmontHorizon
+.row.hidden-xs
+  %a.twitter-timeline{"data-widget-id" => "430531216178020353", :href => "https://twitter.com/WestmontHorizon"} Tweets by @WestmontHorizon
 
 
 :javascript
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
-
--#:plain
-  <a class="twitter-timeline" href="https://twitter.com/WestmontHorizon" data-widget-id="430531216178020353">Tweets by @WestmontHorizon</a>
--#<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 

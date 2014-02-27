@@ -10,6 +10,10 @@
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
 
+# emacs junk
+#*#
+*~
+
 # bundler state
 /.bundle
 /vendor/bundle/

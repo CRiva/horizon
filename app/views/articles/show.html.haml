@@ -1,18 +1,20 @@
 - if  !@article.photo.url.end_with?('/missing.png')
-  = image_tag(@article.photo.url(:large))
-  
-%h2= simple_format(@article.title)
-%small
-  Views
-  = @article.impressions_count
-  | Read Time
-  = @article.read_time
-
+  .row
+    = image_tag(@article.photo.url(:large))
+.row
+  %h2
+    = @article.title
+  %p.lead
+    Views
+    = @article.impressions_count
+    |
+    = @article.read_time
+    | By
+    %i= @article.author_name
 %hr
-
-%p= simple_format(@article.body)
-  
-%p= @article.author_name
+.row
+  .col-md-11
+    .lead.text-justify= simple_format(@article.body)
 
 .span9= social_share_button_tag(@article.title)
 
@@ -20,6 +22,7 @@
 -if can? :update, @article
   = link_to 'Edit', edit_article_path(@article)
   = link_to 'Delete', article_path(@article), confirm: "Are you sure?", method: :delete
+
 %h4 Comments
 - if @article.comments.length > 0
   - @article.comments.each do |comy|

@@ -39,7 +39,6 @@ class Article < ActiveRecord::Base
     end
   end
 
-  # dirty, dirty hack...
   def page_name
     if self.page
       Page.find(self.page).name

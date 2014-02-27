@@ -1,32 +1,16 @@
-- if  !article.photo.url.end_with?('/missing.png')
-  .span3
-    = link_to image_tag(article.photo.url(:medium)), article
-    .caption{ style: "min-height: 100px;"}
-      %h5.text-center
-        = link_to article.title, article
+.col-md-4
+  .thumbnail
+    - if article.photo.file?
+      = link_to image_tag(article.photo.url(:medium)), article
+    - else
+      %p.text-muted.text-justify{ style: 'height:242px; overflow:hidden;' }= truncate(article.body, length:500)
+    .caption
+      %hr
+      %h4= link_to truncate(article.title, length:27), article
+      %i= 'by ' + article.author_name
+      %p.small
+        %i.glyphicon.glyphicon-time
+        %muted= article.read_time 
         %br
-        %h5.muted= truncate(strip_tags(article.body), length:40)
-        %p.text-center
-          %i.icon-time
-          %muted= article.read_time 
-          %br
-          %i.icon-calendar
-          %muted= time_ago_in_words(article.created_at) + " ago"
-        %hr
-
-- else
-  .span3
-    %h3.strong.text-center= link_to simple_format(article.title), article
-    %h5.text-center= article.page_name
-    .caption{ style: "min-height: 100px;"}
-      %h5.text-center
-        = article.author_name
-        %br
-        %h5.muted= truncate(strip_tags(article.body), length:212)
-        %p.text-center
-          %i.icon-time
-          %muted= article.read_time 
-          %br
-          %i.icon-calendar
-          %muted= time_ago_in_words(article.created_at) + " ago"
-        %hr
+        %i.glyphicon.glyph.icon-calendar
+        %muted= time_ago_in_words(article.created_at) + " ago"

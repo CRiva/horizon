@@ -1,21 +1,21 @@
 = simple_form_for(@article) do |f|
   = f.error_notification
-
-  .form-inputs
-    - if can? :create, @article
-      .row
-        .span3
-          = f.input :page, collection: Page.all
-        .span3
-          = f.input :author_name, :as => :string
+  .form-group
     - if can? :edit, @article
       .row
-        .span9
-          PHOTO UPLOAD: 
-          %br
+        .col-md-2
+          = f.input :page, collection: Page.all
+        .col-md-3
+          = f.input :author_name, :as => :string
+        .col-md-3
+          = f.input :title
+      .row
+        .col-md-12
+          Photo: 
           = f.file_field :photo
-      = f.input :title
-      = f.input :body
+      .row
+        .col-md-12
+          = f.input :body
 
   .form-actions
     - if can? :create, @article

@@ -1,7 +1,8 @@
--# %h1= params[:page_name]
 - if @articles.length > 0
   - @articles.each do |article|
     = render article, article: article
 - else
   %h1 No Articles Yet.
 = paginate @articles
+
+  
