@@ -1,7 +1,8 @@
 .navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
-      = link_to image_tag('subh.png'), root_path
+      %a{href: root_path, ondragstart: "return false"}
+        = image_tag asset_path("subh.png")
       %button.navbar-toggle{"data-target" => "#navPage", "data-toggle" => "collapse", type: "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
@@ -16,5 +17,13 @@
           %li.navbar-brand= link_to current_user.name.capitalize, user_path(current_user)
           %li.navbar-brand= link_to "Sign Out", destroy_user_session_path, method: :delete
         - else
-          %li.navbar-brand.pull-right{"data-target" => "#signIn", "data-toggle" => "modal"} Sign In
-          %li.navbar-brand.pull-right{"data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
+          %li.navbar-brand
+            %a{href: "#", "data-target" => "#signIn", "data-toggle" => "modal"} Sign In
+          %li.navbar-brand
+            %a{href: "#", "data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
+
+
+:javascript
+$("img").mousedown(function(){
+    return false;
+});
