@@ -11,9 +11,9 @@ class ArticlesController < ApplicationController
     section_articles = Article.published.where(page: params[:page_id])
     unless params[:search].nil?
       @articles = Article.where("author_name LIKE ? OR title LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
-    else 
+    else
       @articles = section_articles.order('created_at DESC').page(params[:page]).per(10)
-    end 
+    end
     # do different formatting.
     respond_to do |format|
       format.html # index.hmtl.haml
