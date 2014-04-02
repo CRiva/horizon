@@ -14,7 +14,9 @@
 %hr
 .row
   .col-md-11
-    .lead.text-justify= simple_format(@article.body)
+    - if  !@article.pdf.url.end_with?('/missing.png')
+      .lead= link_to "View PDF", @article.pdf.url
+    .lead= simple_format(@article.body)
 
 .span9= social_share_button_tag(@article.title)
 

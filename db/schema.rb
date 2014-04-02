@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129050212) do
+ActiveRecord::Schema.define(version: 20140402051232) do
 
   create_table "artices_pages", id: false, force: true do |t|
     t.integer "page_id"
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20140129050212) do
     t.string   "aasm_state",         default: "new"
     t.string   "author_name"
     t.integer  "impressions_count",  default: 0
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
   end
 
   create_table "comments", force: true do |t|

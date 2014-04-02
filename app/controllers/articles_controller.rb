@@ -23,25 +23,23 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   # GET /articles/1.json
-  def show # make a new comment to show at the bottom of the page.
+  def show
     impressionist(@article)
     @comment = Comment.new(article: @article)
   end
 
   # GET /articles/new
-  def new # make a new article for the new form
+  def new
     @article = Article.new
   end
 
   # GET /articles/1/edit
-  def edit; end # article is already chosen in the set_article private function
+  def edit; end
 
   # POST /articles
   # POST /articles.json
   def create
-    # saves article created in new form
     @article = Article.new(article_params)
-    # @article.author_name = User.find(article_params[:author_id]).name
     @article.author_name = article_params[:author_name]
     respond_to do |format|
       if @article.save
@@ -90,6 +88,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :photo, :page, :published, :author_id, :author_name, :due_date)
+      params.require(:article).permit(:title, :body, :photo, :pdf, :page, :published, :author_id, :author_name, :due_date)
     end
 end
