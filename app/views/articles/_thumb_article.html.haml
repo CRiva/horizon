@@ -5,7 +5,8 @@
     - elsif article.pdf.file?
       = link_to image_tag(article.pdf.url(:medium)), article
     - else
-      %p.text-muted.text-justify{ style: 'height:242px; overflow:hidden;' }= truncate(article.body, length:500)
+      %p.text-muted.text-justify{ style: 'height:242px; overflow:hidden;' }
+        = link_to truncate(article.body, length:500), article, {:class => "myLinkText1"}
     .caption
       %hr
       %h4= link_to truncate(article.title, length:27), article
