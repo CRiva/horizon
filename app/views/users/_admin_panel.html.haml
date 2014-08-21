@@ -28,11 +28,12 @@
     %h3.text-center
       = Impression.where(impressionable_type: 'Visitor').count
   .col-md-2.col-md-offset-1.thumbnail
-    %h4.text-center Active Users
+    %h4.text-center Users
     %h3.text-center= User.count
   .col-md-2.col-md-offset-1.thumbnail
     %h4.text-center New Articles
     %h3.text-center= Article.published.count
+%h2 All Unpublished Articles:
 %table{:class => "table table-hover"}
   %thead
     %tr
@@ -44,7 +45,7 @@
         %strong Updated At
       = # %th
       = # %strong decision
-      - @new_articles.each do |article|
+      - Article.where(published: false).each do |article|
         %tr
           %td= link_to simple_format(article.title), edit_article_path(article)
           %td= article.page_name

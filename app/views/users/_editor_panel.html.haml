@@ -2,6 +2,8 @@
 .row
   .col-md-2
     %a.btn.btn-primary{href: new_article_path}New Article
+%h3
+  UNPUBLISHED ARTICLES:
 %table{:class => "table table-hover"}
   %thead
     %tr
@@ -26,5 +28,5 @@
 
 %h3= current_user.page_name + " Writers Panel"
 
-- User.where(page: current_user.page).each do |writter|
-  %span.label.label-default= writter.name
+- User.where(page: current_user.page).each do |writer|
+  %span.label.label-default= writer.name
