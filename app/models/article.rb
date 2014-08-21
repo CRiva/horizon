@@ -22,8 +22,8 @@ class Article < ActiveRecord::Base
 
   belongs_to :pages
 
-  has_attached_file :pdf
-  validates_attachment :pdf, content_type: { content_type: "application/pdf" }
+  has_attached_file :pdf, styles: { thumb: "100x100#"}
+  validates_attachment :pdf, content_type: { content_type: "application/pdf"}
   has_attached_file :photo, styles: {large: "500x500>", medium: "300x300#", thumb: "100x100#" }
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
