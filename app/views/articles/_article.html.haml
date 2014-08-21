@@ -6,9 +6,9 @@
     %h3= link_to article.title, article
     %i.glyphicon.glyphicon-user
     %muted= article.author_name
-    %i.glyphicon.glyphicon-calendar  
+    %i.glyphicon.glyphicon-time  
     %muted= article.read_time
-    %i.glyphicon.glyphicon-time
+    %i.glyphicon.glyphicon-calendar
     %muted= time_ago_in_words(article.created_at) + " ago"
     %i.glyphicon.glyphicon-comment
     =  article.comments.length.to_s
