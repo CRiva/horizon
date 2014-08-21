@@ -1,7 +1,9 @@
 .col-md-4
-  .thumbnail
+  .thumbnail.myHover1.bw
     - if article.photo.file?
       = link_to image_tag(article.photo.url(:medium)), article
+    - elsif article.pdf.file?
+      = link_to image_tag(article.pdf.url(:medium)), article
     - else
       %p.text-muted.text-justify{ style: 'height:242px; overflow:hidden;' }= truncate(article.body, length:500)
     .caption
