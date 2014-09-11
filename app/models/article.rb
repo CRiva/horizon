@@ -57,7 +57,7 @@ class Article < ActiveRecord::Base
     if read_time > 1.0
       return (read_time.to_s + " minutes to read")
     else
-      return "less than a minute to read."
+      return "less than a minute to read"
     end
   end  
 end
