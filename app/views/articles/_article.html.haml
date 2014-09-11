@@ -4,12 +4,15 @@
       = link_to image_tag(article.photo.url(:thumb), class: "img-thumbnail"), article
   .col-md-10
     %h3= link_to article.title, article
-    %i.glyphicon.glyphicon-user
-    %muted= article.author_name
-    %i.glyphicon.glyphicon-time  
-    %muted= article.read_time
-    %i.glyphicon.glyphicon-calendar
-    %muted= time_ago_in_words(article.created_at) + " ago"
-    %i.glyphicon.glyphicon-comment
-    =  article.comments.length.to_s
+    %i
+    %muted= "Written by: " + article.author_name + "."
+    %i
+    %muted= "Time to read: " + article.read_time
+    %i
+    %muted= "Written: " + time_ago_in_words(article.created_at) + " ago."
+    %i
+    - if article.comments.length.to_i > 0
+      =  "Number of comments: " + article.comments.length.to_s + "."
+    - else
+      = "No comments yet"
 %hr

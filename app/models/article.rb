@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   is_impressionable :counter_cache => true, :column_name => :impressions_count
 
+  # for a state machine that will never be used
   include AASM
   aasm do
     state :new, initial: true

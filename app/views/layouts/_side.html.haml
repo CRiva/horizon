@@ -8,7 +8,7 @@
 .row.hidden-xs
   %h3 
     Trending Articles
-    %i.glyphicon.glyphicon-fire
+    %i
   %ol
     - Article.published.where("created_at >= ?", Time.zone.now.beginning_of_week).order("impressions_count DESC").limit(5).each do |article|
       %li
