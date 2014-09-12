@@ -9,11 +9,11 @@
     %h3= link_to article.title, article
     %i
     %muted= "Written by: " + article.author_name + "."
-    %i
+    |
     %muted= "Time to read: " + article.read_time + "."
-    %i
+    |
     %muted= "Written: " + time_ago_in_words(article.created_at) + " ago."
-    %i
+    |
     - if article.comments.length.to_i > 0
       =  "Number of comments: " + article.comments.length.to_s + "."
     - else
