@@ -1,6 +1,6 @@
 %h3 Admin Panel
 %h4
-  %i.glyphicon.glyphicon-wrench
+  %i
   = link_to "Manage Users", users_path
 
 .row
@@ -31,7 +31,7 @@
     %h4.text-center Users
     %h3.text-center= User.count
   .col-md-2.col-md-offset-1.thumbnail
-    %h4.text-center New Articles
+    %h4.text-center Total Articles
     %h3.text-center= Article.published.count
 %h2 All Unpublished Articles:
 %table{:class => "table table-hover"}
@@ -53,3 +53,17 @@
           %td
             = # .span.badge approve?
             = # .span.badge delete
+
+%h2 All Editors
+%table{:class => "table table-hover"}
+  %thread
+    %tr
+      %th
+        %strong Name
+      %th 
+        %strong Email
+      - User.where(id: 1).each do |editor|
+        %tr
+          %td= editor.name
+          %td= editor.email
+          %td
