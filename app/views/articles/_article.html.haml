@@ -2,6 +2,9 @@
   - if article.photo.file?
     .col-md-2
       = link_to image_tag(article.photo.url(:thumb), class: "img-thumbnail"), article
+  - elsif article.pdf.file?
+    .col-md-2
+      = link_to image_tag(article.pdf.url(:thumb), class: "img-thumbnail"), article
   .col-md-10
     %h3= link_to article.title, article
     %i

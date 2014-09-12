@@ -22,6 +22,7 @@ gem 'koala'
 gem 'impressionist'
 gem 'thin'
 gem 'yaml_db'
+gem 'delayed_job_active_record'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby
