@@ -62,7 +62,7 @@
         %strong Name
       %th 
         %strong Email
-      - User.where(id: 1).each do |editor|
+      - User.includes(:roles).where('roles.id'=>[4]).each do |editor|
         %tr
           %td= editor.name
           %td= editor.email
