@@ -1,4 +1,48 @@
 - content_for :title do
   Contact
 %h3 Contact The Horizon
-%p Consider viewing the Wesmont homepage to find our contact information.
+.row
+  .col-md-12
+    = image_tag(asset_path('staff2014-15contact.jpg'), width: '100%')
+  %h3.centered Thanks for your interest in the Horizon!
+  %hr.centered 
+  %h4.centered Check us out on Social Media! 
+  .centered
+    = link_to(image_tag(asset_path('facebook.png')), 'https://www.facebook.com/westmont.horizon', :target => "_blank")
+    = link_to(image_tag(asset_path('twitter.png')), 'https://twitter.com/WestmontHorizon', :target => "_blank")
+  %hr
+  %h5.centered Please send general inquiries to: #{link_to "horizon@westmont.edu", "mailto:horizon@westmont.edu"}
+
+  %h5.centered Interested in advertising in the Horizon? Contact Advertising Manager Rebecca Hawkins at #{link_to "rehawkins@westmont.edu", "mailto:rehawkins@westmont.edu"}
+
+  %h5.centered 
+    Interested in receiving a copy of the Horizon delivered to your home or office? Please contact subscriptions manager Alysha Kim ( #{link_to "alkim@westmont.edu", "mailto:alkim@westmont.edu"}), or follow this link to the Horizon Subscription Order Form.
+  %hr
+  %h4.centered If you would like to get in contact with a member of our staff, please refer to the listings below:  
+  %br
+  %h5.centered Editor-in-Chief: Katie Pluymert (#{link_to "kpluymert@westmont.edu", "mailto:kpluymert@westmont.edu"})
+  %br
+  %h5.centered Managing Editor: Evan Arnold (#{link_to "evarnold@westmont.edu", "mailto:evarnold@westmont.edu"})
+  %br
+  %h5.centered Web Developer: Connor Riva (#{link_to "criva@westmont.edu", "mailto:criva@westmont.edu"})
+  %br
+  %h5.centered News Editor: Katie Baker (#{link_to "katbaker@westmont.edu", "mailto:katbaker@westmont.edu"})
+  %h5.centered Feature Editor: Jaewoo Chung (#{link_to "jaechung@westmont.edu", "mailto:jaechung@westmont.edu"})
+  %h5.centered Sports Editor: Christian Eckert (#{link_to "checker@westmont.edu", "mailto:checker@westmont.edu"})
+  %h5.centered Arts & Entertainment Editor: Margie Hausam (#{link_to "khausam@westmont.edu", "mailto:khausam@westmont.edu"})
+  %h5.centered Opinions/Editorials Editor: Madison Fitzsimmons (#{link_to "mfitzsimmons@westmont.edu", "mailto:mfitzsimmons@westmont.edu"})
+  %h5.centered Student Life Editor: Johanna Ward (#{link_to "joward@westmont.edu", "mailto:joward@westmont.edu"})
+  %h5.centered Capstone Editor: Samantha Crandall (#{link_to "scrandall@westmont.edu", "mailto:scrandall@westmont.edu"})
+  %br
+  %h5.centered Copy Editors: Zoe Newcomb (#{link_to "znewcomb@westmont.edu", "mailto:znewcomb@westmont.edu"}) & Joellen Banks (#{link_to "", "mailto:jbanks@westmont.edu"})
+  %br 
+  %h5.centered Design Editor: Betsy Freeman (#{link_to "bfreeman@westmont.edu", "mailto:bfreeman@westmont.edu"})
+  %h5.centered Photo Editor: Donald Brubaker (#{link_to "dbrubaker@westmont.edu", "mailto:dbrubaker@westmont.edu"})
+  %h5.centered Graphics & Comics Editor: Brandon Daniels (#{link_to "mailto:bdaniels@westmont.edu", "mailto:bdaniels@westmont.edu"})
+  %br
+  %h5.centered Business Manager: Kha-ai Nguyen (#{link_to "khnguyen@westmont.edu", "mailto:khnguyen@westmont.edu"})
+  %h5.centered Subscriptions Manager: Alysha Kim (#{link_to "alkim@westmont.edu", "mailto:alkim@westmont.edu"})
+  %h5.centered Advertising Manager: Rebecca Hawkins (#{link_to "rehawkins@westmont.edu", "mailto:rehawkins@westmont.edu"})
+  %h5.centered Distribution Manager: Emily Rutherford (#{link_to "erutherford@westmont.edu", "mailto:erutherford@westmont.edu"})
+  %br 
+  %h5.centered Faculty Advisor: Dr. Randall VanderMey (#{link_to "vanderme@westmont.edu", "mailto:vanderme@westmont.edu"})
