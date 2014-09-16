@@ -3,6 +3,7 @@
   .col-md-8
     %h2= @user.email
     %h4= @user.name
+    %h5= link_to "Change Password", edit_user_registration_path
     %p
       = 'signed in: ' + @user.sign_in_count.to_s + ' times.'
 .row
