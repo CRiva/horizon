@@ -21,6 +21,7 @@
       .hidden-sm.hidden-md.hidden-lg
         .h1= link_to "View PDF", @article.pdf.url, :target => '_blank'
     .lead= simple_format(@article.body)
+%hr
 
 
 -if can? :update, @article
