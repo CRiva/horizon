@@ -21,7 +21,10 @@
       .hidden-sm.hidden-md.hidden-lg
         .h1= link_to "View PDF", @article.pdf.url, :target => '_blank'
     .lead= simple_format(@article.body)
-.span9= social_share_button_tag(@article.title)
+
+.span
+  %h4 Share:
+  = social_share_button_tag(@article.title)
 
 
 -if can? :update, @article
