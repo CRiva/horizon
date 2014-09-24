@@ -22,10 +22,6 @@
         .h1= link_to "View PDF", @article.pdf.url, :target => '_blank'
     .lead= simple_format(@article.body)
 
-.span
-  %h4 Share:
-  = social_share_button_tag(@article.title)
-
 
 -if can? :update, @article
   = link_to 'Edit', edit_article_path(@article)
