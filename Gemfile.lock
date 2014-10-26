@@ -205,7 +205,6 @@ GEM
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
     slop (3.4.6)
-    social-share-button (0.1.4)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -273,7 +272,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   simple_form
-  social-share-button
   sqlite3
   therubyracer
   thin
