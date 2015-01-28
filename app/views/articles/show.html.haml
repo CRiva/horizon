@@ -2,9 +2,9 @@
   .row
     = link_to image_tag(@article.photo.url(:large)), @article.photo.url
 .row
-  %h2.colorWhite
+  %h2
     = @article.title
-  %p.lead.colorWhite
+  %p.lead
     Views
     = @article.impressions_count
     |

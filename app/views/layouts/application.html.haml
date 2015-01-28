@@ -8,23 +8,23 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-  %body{ style: 'padding-top: 100px; background-image: url(/assets/metal.jpg); background-size: 100% 100%; background-repeat: no-repeat;' }
-  %header
-    .container
-  %main{:role => "main"}
-    .container
-      .row
-        = render 'layouts/messages'
-      .row
-        .col-md-12
-          = render 'layouts/navigation'
-      .row
-        .col-md-9
-          = yield
-        .col-md-3
-          = render 'layouts/side'
-  %footer
-    = render 'layouts/footer'
+  %body{ style: 'padding-top: 100px;' }
+    %header
+      .container
+    %main{:role => "main"}
+      .container
+        .row
+          = render 'layouts/messages'
+        .row
+          .col-md-12
+            = render 'layouts/navigation'
+        .row
+          .col-md-9
+            = yield
+          .col-md-3
+            = render 'layouts/side'
+    %footer
+      = render 'layouts/footer'
 
 
 #signUp.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signUpLabel", role: "dialog", tabindex: "-1"}
