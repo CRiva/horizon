@@ -13,7 +13,7 @@
     - Article.published.where("created_at >= ?", Time.zone.now.beginning_of_week).order("impressions_count DESC").limit(5).each do |article|
       %li
         %p
-          = link_to article.title, article
+          = link_to article.title, article, {:style => 'color: white;'}
           %small
             %i= "by " + article.author_name
 .row.hidden-xs
