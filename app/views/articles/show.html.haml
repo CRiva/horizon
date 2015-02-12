@@ -9,6 +9,12 @@
     = @article.impressions_count
     |
     = @article.read_time
+    | Uploaded: 
+    = @article.updated_at.month
+    \-
+    = @article.updated_at.day
+    \-
+    = @article.updated_at.year
     | By
     %i= @article.author_name
 %hr
