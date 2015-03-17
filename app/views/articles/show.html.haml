@@ -15,7 +15,7 @@
     = @article.updated_at.day
     \-
     = @article.updated_at.year
-    | By
+    | By:
     %i= @article.author_name
 %hr
 .row
@@ -29,6 +29,10 @@
     .lead= simple_format(@article.body)
 %hr
 
+-#%h4 
+  %b Share-article:
+
+-#= image_tag("facebook.png")
 
 -if can? :update, @article
   = link_to 'Edit', edit_article_path(@article)
@@ -50,3 +54,8 @@
     = f.text_area :body, placeholder: "Comment..."
     = f.submit
 
+-#:javascript
+  FB.ui({
+    method: 'share',
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
