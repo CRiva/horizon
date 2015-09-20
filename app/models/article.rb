@@ -1,63 +1,57 @@
 class Article < ActiveRecord::Base
-  is_impressionable :counter_cache => true, :column_name => :impressions_count
-
-  # for a state machine that will never be used
-  include AASM
-  aasm do
-    state :new, initial: true
-    state :approved
-    state :copy
-    state :ready
-
-
-    event :review do
-      transitions from: :new, to: :approved
-    end
-    event :wrote do
-      transitions from: :approved, to: :copy
-    end
-    event :finish do
-      transitions from: :copy, to: :ready
-    end
-  end
+  AVERAGE_WPM = 150.freeze
 
   belongs_to :pages
+  has_many :comments, dependent: :destroy
 
-  has_attached_file :pdf, styles: { :thumb => ["100x100#", :jpg], :medium => ["300x300#", :jpg], :large => ["500x500#", :jpg]}
-  validates_attachment :pdf, content_type: { content_type: "application/pdf"}
-  has_attached_file :photo, styles: {large: "500x500>", medium: "300x300#", thumb: "100x100#" }
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  is_impressionable :counter_cache => true, :column_name => :impressions_count
+
+  scope :published, -> { where(published: true) }
 
   validates :page, :title, :body, :author_name, presence: true
   validates :title, uniqueness: true
-  has_many :comments, dependent: :destroy
 
-  scope :published, -> { where(published: true) }
+  has_attached_file :pdf, styles: {
+                      thumb: ["100x100#", :jpg],
+                      medium: ["300x300#", :jpg],
+                      large: ["500x500#", :jpg]
+                    }
+
+  validates_attachment :pdf, content_type: {
+                         content_type: "application/pdf"
+                       }
+
+  has_attached_file :photo, styles: {
+                      large: "500x500>",
+                      medium: "300x300#",
+                      thumb: "100x100#"
+                    }
+
+  validates_attachment_content_type :photo, content_type:
+                                              ['image/jpeg',
+                                               'image/png',
+                                               'image/gif']
 
   def self.search(search)
     if search
       q = "%#{search}%"
-      where("author_name LIKE ? OR title LIKE ?", q, q)
+      published.where("author_name LIKE ? OR title LIKE ?", q, q)
     else
-      where(published: true)
+      published
     end
+
   end
 
   def page_name
-    if self.page
-      Page.find(self.page).name
-    else
-      return self.page
-    end
+    Page.find(self.page).name
   end
+
   def read_time
-    # approximate cuz we don't strip html tags from the body
-    # read time in minutes is word count / 150 (average words per minute for a non-dyslexic college student)
-    read_time = (self.body.split.count / 150)
-    if read_time > 1.0
+    read_time = (self.body.split.count / AVERAGE_WPM)
+    if read_time >= 1
       return ("Time to read: " + read_time.to_s + " minutes")
     else
       return "Time to read: less than a minute"
     end
-  end  
+  end
 end
