@@ -25,8 +25,12 @@ describe Article do
   end
 
   describe 'with a published and unpublished article' do
-    after(:each) { Article.destroy_all }
+    after(:each) {
+      Article.destroy_all
+      Page.destroy_all
+    }
     before(:each) {
+      Page.destroy_all
       Article.destroy_all
 
       Article.create!({
@@ -96,7 +100,8 @@ describe Article do
 
     describe '#page_name' do
       it 'finds the name of the page the article is from' do
-        Page.create!({ name: 'sports' })
+        page = Page.create!({ name: 'Sports' })
+        Article.first.update_attribute('page', page.id)
         expect(Article.first.page_name).to eq('Sports')
       end
     end

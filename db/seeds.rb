@@ -10,16 +10,12 @@
 
 roles = ["Admin","Editor", "Author", "Member", "Creative", "Moderator"]
 
-while !roles.empty?
-  r = Role.new
-  r.name = roles.shift()
-  r.save
+roles.each do |role|
+  Role.create!({ name: role })
 end
 
 pages = ["News", "Sports", "OpEd", "Arts", "Capstone"]
 
-while !pages.empty?
-  p = Page.new
-  p.name = pages.shift()
-  p.save
+pages.each do |page|
+  Page.create!({ name: page })
 end
