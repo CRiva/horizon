@@ -1,7 +1,14 @@
 require 'spec_helper'
 
 describe User do
-  before(:each) { User.destroy_all }
+  before(:each) {
+    User.destroy_all
+    roles = ["Admin","Editor", "Author", "Member", "Creative", "Moderator"]
+
+    roles.each do |role|
+      Role.create!({ name: role })
+    end
+  }
   after(:each) { User.destroy_all }
 
   it 'validates the name is unique' do
