@@ -55,4 +55,17 @@ describe User do
       expect(@admin_user.reload.role_ids).to eq([1, 2, 3])
     end
   end
+
+  describe '#role?' do
+    it 'checks if a role is included' do
+      Role.create({ name: "Admin" })
+      user = User.create!({
+                             name: 'Alex',
+                             password: 'testpassword',
+                             email: 'fake@fake.com',
+                             role_ids: [1]
+                           })
+      expect(user.role?("Admin")).to be_truthy
+    end
+  end
 end
