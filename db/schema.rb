@@ -13,12 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20140402051232) do
 
-  create_table "artices_pages", id: false, force: true do |t|
+  create_table "artices_pages", id: false, force: :cascade do |t|
     t.integer "page_id"
     t.integer "article_id"
   end
 
-  create_table "articles", force: true do |t|
+  create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140402051232) do
     t.datetime "pdf_updated_at"
   end
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.string   "name"
     t.text     "body"
     t.datetime "created_at"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140402051232) do
     t.integer  "article_id"
   end
 
-  create_table "impressions", force: true do |t|
+  create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"
     t.integer  "impressionable_id"
     t.integer  "user_id"
@@ -73,29 +73,29 @@ ActiveRecord::Schema.define(version: 20140402051232) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
 
-  create_table "pages", force: true do |t|
+  create_table "pages", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pages_users", id: false, force: true do |t|
+  create_table "pages_users", id: false, force: :cascade do |t|
     t.integer "page_id"
     t.integer "user_id"
   end
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "roles_users", id: false, force: true do |t|
+  create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "role_id"
     t.integer "user_id"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
