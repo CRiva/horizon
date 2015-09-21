@@ -29,18 +29,16 @@ Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, options)
 end
 
-module HorizonIntegration
-  class PoltergeistIntegrationTest < ActionDispatch::IntegrationTest
-    include Capybara::DSL
-    
-    # take_screenshot : A way for the developer to take screenshots during tests
-    #=> nil
-    def take_screenshot
-      path = Rails.root.join('test/integration/screenshots/')
-      i = Dir[path.join("*.png")].length + 1
-      name = "screenshot#{i}.png"
-      page.save_screenshot(path + name)
-      puts "Screenshot saved: #{path.to_s + name}"
-    end
+class PoltergeistIntegrationTest < ActionDispatch::IntegrationTest
+  include Capybara::DSL
+  
+  # take_screenshot : A way for the developer to take screenshots during tests
+  #=> nil
+  def take_screenshot
+    path = Rails.root.join('test/integration/screenshots/')
+    i = Dir[path.join("*.png")].length + 1
+    name = "screenshot#{i}.png"
+    page.save_screenshot(path + name)
+    puts "Screenshot saved: #{path.to_s + name}"
   end
 end
