@@ -51,6 +51,8 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
     builder (3.2.2)
+    byebug (5.0.0)
+      columnize (= 0.9.0)
     cancan (1.6.10)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -64,6 +66,7 @@ GEM
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
+    columnize (0.9.0)
     daemons (1.2.3)
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
@@ -121,6 +124,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.6.2)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
@@ -141,6 +145,13 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
+      pry (~> 0.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -197,6 +208,7 @@ GEM
     simple_form (3.1.1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    slop (3.6.0)
     sprockets (3.3.4)
       rack (~> 1.0)
     sprockets-rails (2.3.3)
@@ -248,6 +260,7 @@ DEPENDENCIES
   koala
   paperclip
   poltergeist
+  pry-byebug
   quiet_assets
   rails
   rspec-rails

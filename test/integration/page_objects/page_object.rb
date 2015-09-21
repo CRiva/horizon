@@ -43,7 +43,7 @@ class PageObject
   def wait_for_element_css(css, time_out = TIMEOUT)
     raise 'Element does not exist' if element.nil?
     unless element.has_css?(css, wait: time_out)
-      raise "Page Object never loaded '#{css}"
+      raise "Page Object never loaded '#{css}'"
     end
   end
 

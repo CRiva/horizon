@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require "capybara/rails"
 require 'capybara/poltergeist'
 
+# Include PageObject(s)
 TEST_BASE = File.dirname(__FILE__).freeze
 Dir[TEST_BASE + '/page_objects/*/*'].each(&method(:require))
 
@@ -29,7 +30,7 @@ Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, options)
 end
 
-class PoltergeistIntegrationTest < ActionDispatch::IntegrationTest
+class PoltergeistIntegrationTest
   include Capybara::DSL
   
   # take_screenshot : A way for the developer to take screenshots during tests

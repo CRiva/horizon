@@ -27,6 +27,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist' # Requires PhantomJS on the host machine - MN
+  gem 'pry-byebug'
 end
 
 group :development do
