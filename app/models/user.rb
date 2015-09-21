@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :pages
+
   has_attached_file :avatar,
                     styles: {
                       medium: "300x300>",
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
     if self.page
       Page.find(self.page).name
     else
-      return ""
+      ''
     end
   end
 

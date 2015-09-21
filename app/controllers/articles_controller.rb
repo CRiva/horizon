@@ -1,43 +1,30 @@
+# controller responsible for showing articles to the user
 class ArticlesController < ApplicationController
   # impressionist :actions=>[:show]
 
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
 
-  # GET /articles
-  # GET /articles.json
   def index
-    # get the articles for that page (i.e. news, sports)
-    section_articles = Article.published.where(page: params[:page_id])
-    unless params[:search].nil?
-      @articles = Article.where("author_name LIKE ? OR title LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
-    else
-      @articles = section_articles.order('created_at DESC').page(params[:page]).per(10)
-    end
-    # do different formatting.
-    respond_to do |format|
-      format.html # index.hmtl.haml
-      format.xml { render xml: @articles }
-    end
+    @articles =
+      if params[:search].nil?
+        Article.published.on(params[:page_id]).order(created_at: :desc).page(params[:page]).per(10)
+      else
+        Article.search(params[:search])
+      end
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
   def show
     impressionist(@article)
     @comment = Comment.new(article: @article)
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
   def edit; end
 
-  # POST /articles
-  # POST /articles.json
   def create
     @article = Article.new(article_params)
     @article.author_name = article_params[:author_name]
@@ -52,8 +39,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
       if @article.update_attributes(article_params)
@@ -81,13 +66,13 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:article).permit(:title, :body, :photo, :pdf, :page, :published, :author_id, :author_name, :due_date)
-    end
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def article_params
+    params.require(:article).permit(:title, :body, :photo, :pdf, :page, :published, :author_id, :author_name, :due_date)
+  end
 end

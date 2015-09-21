@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Article do
+RSpec.describe Article do
   describe 'validations' do
     it 'requires be invalid without params' do
       article = Article.new
@@ -9,14 +9,7 @@ describe Article do
   end
 
   describe 'with valid article' do
-    let (:article) {
-      Article.new({
-                    title: 'Monkey',
-                    body: 'Chicken',
-                    page: 1,
-                    author_name: 'Mike'
-                  })
-    }
+    let (:article) { build(:article) }
 
     it 'should set defaults' do
       expect(article.published).to be_falsey
@@ -25,35 +18,10 @@ describe Article do
   end
 
   describe 'with a published and unpublished article' do
-    after(:each) {
-      Article.destroy_all
-      Page.destroy_all
-    }
     before(:each) {
-      Page.destroy_all
-      Article.destroy_all
-
-      Article.create!({
-                       title: 'Monkey',
-                       body: 'Chicken',
-                       page: 1,
-                       author_name: 'Mike',
-                       published: false
-                      })
-      Article.create!({
-                        title: 'Alligator',
-                        body: 'Chicken',
-                        page: 1,
-                        author_name: 'Jim',
-                        published: true
-                      })
-      Article.create!({
-                        title: 'French Press',
-                        body: 'Chicken',
-                        page: 1,
-                        author_name: 'Megan',
-                        published: true
-                      })
+      create(:article, title: 'Monkey', author_name: 'Mike')
+      create(:article, title: 'Alligator', author_name: 'Jim', published: true)
+      create(:article, title: 'French Press', author_name: 'Megan', published: true)
     }
 
     it 'will only show published articles in the published scope' do

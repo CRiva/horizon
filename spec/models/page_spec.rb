@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe Page do
-  after(:each) { Page.destroy_all }
+RSpec.describe Page do
   it 'must have a unique name' do
     expect(Page.new).to be_invalid
     expect(Page.new({name: "Sports"})).to be_valid
