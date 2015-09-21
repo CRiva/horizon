@@ -28,6 +28,8 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'poltergeist' # Requires PhantomJS on the host machine - MN
+  gem 'pry-byebug'
 end
 
 group :development do
