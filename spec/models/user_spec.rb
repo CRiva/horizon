@@ -28,7 +28,7 @@ RSpec.describe User do
 
   describe '#role?' do
     it 'checks if a role is included' do
-      user = User.create!(attributes_for(:user, name: 'Adam', role_ids: [1]))
+      user = create(:user, name: 'Adam', role_ids: [1])
       expect(user.role?("Admin")).to be_truthy
     end
   end
