@@ -74,7 +74,7 @@ RSpec.describe ArticlesController do
                  due_date: Time.now
                }
       post :create, article: params
-      expect(assigns(:article).attributes).to eq(Article.first.attributes)
+      expect(assigns(:article)).to eq(Article.first)
     end
   end
 end
