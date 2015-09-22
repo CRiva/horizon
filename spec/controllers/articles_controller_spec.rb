@@ -61,4 +61,20 @@ RSpec.describe ArticlesController do
       expect(response.status).to eq(200)
     end
   end
+
+  describe 'POST create' do
+    before(:each) { sign_in :user, create(:user, role_ids: [1]) }
+
+    it 'will create a article' do
+      params = { title: 'test',
+                 body: 'test body',
+                 page: 1,
+                 published: true,
+                 author_name: 'Adam',
+                 due_date: Time.now
+               }
+      post :create, article: params
+      expect(assigns(:article).attributes).to eq(Article.first.attributes)
+    end
+  end
 end
