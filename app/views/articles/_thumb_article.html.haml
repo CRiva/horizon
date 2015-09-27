@@ -1,19 +1,19 @@
 .col-md-4
   .thumbnail.myHover1.bw
     - if article.photo.file?
-      = link_to image_tag(article.photo.url(:medium)), article
+      = image_tag(article.photo.url(:medium))
     - elsif article.pdf.file?
-      = link_to image_tag(article.pdf.url(:medium)), article
+      = image_tag(article.pdf.url(:medium))
     - else
       %p.text-muted.text-justify{ style: 'height:242px; overflow:hidden;' }
-        = link_to truncate(article.body, length:500), article, {:class => "myLinkText1"}
+        = truncate(article.body, length:500)
     .caption
       %hr
-      %h4= link_to truncate(article.title, length:27), article
+      %h4= truncate(article.title, length:27)
       %i= 'by ' + article.author_name
       %p.small
         %i
-        %muted= article.read_time 
-        %br
-        %i.glyphicon.glyph.icon-calendar
-        %muted= time_ago_in_words(article.created_at) + " ago"
+          %muted= article.read_time
+          %br
+          %i.glyphicon.glyph.icon-calendar
+          %muted= time_ago_in_words(article.created_at) + " ago"

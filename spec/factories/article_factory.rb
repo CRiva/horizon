@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :article do
-    sequence(:title) { |n| "article#{n}"}
+    sequence(:title) { |n| "article#{n}" }
     body 'This is the body'
     author_name 'Connor'
     page 1
