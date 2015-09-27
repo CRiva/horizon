@@ -12,7 +12,7 @@ RSpec.configure do |config|
     roles = ["Admin","Editor", "Author", "Member", "Creative", "Moderator"]
 
     roles.each do |role|
-      Role.create!({ name: role })
+      Role.create!(name: role)
     end
 
     begin
