@@ -12,14 +12,14 @@ RSpec.describe Article do
     let (:article) { build(:article) }
 
     it 'should set defaults' do
-      expect(article.published).to be_falsey
+      expect(article.published).to be_truthy
       expect(article.impressions_count).to eq(0)
     end
   end
 
   describe 'with a published and unpublished article' do
     before(:each) {
-      create(:article, title: 'Monkey', author_name: 'Mike')
+      create(:article, title: 'Monkey', author_name: 'Mike', published: false)
       create(:article, title: 'Alligator', author_name: 'Jim', published: true)
       create(:article, title: 'French Press', author_name: 'Megan', published: true)
     }

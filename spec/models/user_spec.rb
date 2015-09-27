@@ -21,7 +21,7 @@ RSpec.describe User do
       expect(@user.role_ids).to eq([2,3])
       expect(@admin_user.role_ids).to eq([1, 2, 3])
       User.make_all_members
-      expect(@user.reload.role_ids).to eq([3])
+      expect(@user.reload.role_ids).to eq([4])
       expect(@admin_user.reload.role_ids).to eq([1, 2, 3])
     end
   end

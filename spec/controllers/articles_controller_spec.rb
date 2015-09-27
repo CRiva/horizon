@@ -87,7 +87,7 @@ RSpec.describe ArticlesController do
         "photo_content_type" => nil,
         "photo_file_size" => nil,
         "photo_updated_at" => nil,
-        "published" => false,
+        "published" => true,
         "author_id" => nil,
         "due_date" => nil,
         "aasm_state" => "new",
