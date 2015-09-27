@@ -8,7 +8,10 @@ class ArticlesController < ApplicationController
   def index
     @articles =
       if params[:search].nil?
-        Article.published.on(params[:page_id]).order(created_at: :desc).page(params[:page]).per(10)
+        Article.published.
+          on(params[:page_id]).
+          order(created_at: :desc).
+          page(params[:page]).per(10)
       else
         Article.search(params[:search])
       end
@@ -71,6 +74,14 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :photo, :pdf, :page, :published, :author_id, :author_name, :due_date)
+    params.require(:article).permit(:title,
+                                    :body,
+                                    :photo,
+                                    :pdf,
+                                    :page,
+                                    :published,
+                                    :author_id,
+                                    :author_name,
+                                    :due_date)
   end
 end

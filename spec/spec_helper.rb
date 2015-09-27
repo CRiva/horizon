@@ -9,7 +9,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
-    roles = ["Admin", "Editor", "Author", "Member", "Creative", "Moderator"]
+    roles = ['Admin', 'Editor', 'Author', 'Member', 'Creative', 'Moderator']
 
     roles.each do |role|
       Role.create!(name: role)

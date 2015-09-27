@@ -30,11 +30,11 @@ RSpec.describe Article do
 
     it 'must have unique titles' do
       article = Article.new({
-                    title: 'Monkey',
-                    body: 'Chicken',
-                    page: 1,
-                    author_name: 'Mike',
-                  })
+                              title: 'Monkey',
+                              body: 'Chicken',
+                              page: 1,
+                              author_name: 'Mike',
+                            })
       expect(article).to be_invalid
     end
 

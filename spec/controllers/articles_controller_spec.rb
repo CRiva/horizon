@@ -14,9 +14,9 @@ RSpec.describe ArticlesController do
         before(:each) { 20.times { create(:article, published: true) } }
 
         it 'returns 10 articles in created at order' do
-          expected = Article.where(page: 1)
-                              .order(created_at: :desc)
-                              .limit(10)
+          expected = Article.where(page: 1).
+                     order(created_at: :desc).
+                     limit(10)
           get :index, page_id: 1
           actual = assigns(:articles)
           expect(actual.map(&:title)).to eq(expected.map(&:title))
