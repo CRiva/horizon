@@ -65,16 +65,58 @@ RSpec.describe ArticlesController do
   describe 'POST create' do
     before(:each) { sign_in :user, create(:user, role_ids: [1]) }
 
-    it 'will create a article' do
-      params = { title: 'test',
-                 body: 'test body',
-                 page: 1,
-                 published: true,
-                 author_name: 'Adam',
-                 due_date: Time.now
-               }
-      post :create, article: params
+    it 'creates an article' do
+      post :create, article: attributes_for(:article)
       expect(assigns(:article)).to eq(Article.first)
     end
+
+    it 'assigns the expected params' do
+      params = attributes_for(:article)
+      post :create, article: params
+      attributes = assigns(:article).attributes
+      assigned_attributes = attributes.select { |attr|
+        params.keys.include?(attr.to_sym)
+      }
+      expect(assigned_attributes).to eq(params.stringify_keys)
+    end
+
+    it 'sets the expected defaults defaults' do
+      defaults =  {
+        "id" => 1,
+        "photo_file_name" => nil,
+        "photo_content_type" => nil,
+        "photo_file_size" => nil,
+        "photo_updated_at" => nil,
+        "published" => false,
+        "author_id" => nil,
+        "due_date" => nil,
+        "aasm_state" => "new",
+        "impressions_count" => 0,
+        "pdf_file_name" => nil,
+        "pdf_content_type" => nil,
+        "pdf_file_size" => nil,
+        "pdf_updated_at" => nil
+      }
+
+      params = attributes_for(:article)
+      post :create, article: params
+      non_assigned = assigns(:article)
+                 .attributes
+                 .except(*attributes_for(:article).stringify_keys.keys)
+                 .except("created_at", "updated_at")
+      expect(non_assigned).to eq(defaults)
+    end
+  end
+
+  describe 'POST update' do
+    before(:each) { sign_in :user, create(:user, role_ids: [1]) }
+    it 'updates the article' do
+      create(:article)
+      post :update, id: 1, article: { title: 'updated title' }
+      expect(Article.first.title).to eq('updated title')
+    end
+  end
+  describe "DELETE destroy" do
+    it 'deletes the article'
   end
 end

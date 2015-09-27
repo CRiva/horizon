@@ -42,7 +42,6 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update_attributes(article_params)
-        # @article.author_name = User.find(@article.author_id).name
         @article.author_name = article_params[:author_name]
         @article.save
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -71,7 +70,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def article_params
     params.require(:article).permit(:title, :body, :photo, :pdf, :page, :published, :author_id, :author_name, :due_date)
   end

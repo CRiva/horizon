@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   def self.make_all_members
     all.each do |user|
       unless user.role_ids.include?(1)
-        user.role_ids = [3]
+        user.role_ids = [Role.find_by_name('Member').id]
         user.save!
       end
     end

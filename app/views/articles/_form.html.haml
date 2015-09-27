@@ -1,25 +1,31 @@
 = simple_form_for(@article) do |f|
   = f.error_notification
-  .form-group
+  .col-md-12
     - if can? :edit, @article
-      .row
-        .col-md-2
-          = f.input :page, collection: Page.all
-        .col-md-3
-          = f.input :author_name, :as => :string
-        .col-md-3
-          = f.input :title
-      .row
-        .col-md-12
-          Photo: 
-          = f.file_field :photo
-          PDF: 
-          = f.file_field :pdf
-      .row
-        .col-md-12
-          = f.input :body
+      .form-group
+        .row
+          .col-md-12
+            = f.input :title, input_html: { class: "form-control" }
+      .form-group
+        .row
+          .col-md-6
+            = f.input :page, collection: Page.all, input_html: { class: "form-control" }
+          .col-md-6
+            = f.input :author_name, :as => :string, input_html: { class: "form-control" }
+      .form-group
+        .row
+          .col-md-6
+            = f.label :photo
+            = f.file_field :photo
+          .col-md-6
+            = f.label :pdf
+            = f.file_field :pdf
+      .form-group
+        .row
+          .col-md-12
+            = f.input :body, input_html: { class: "form-control", rows: 20 }
 
-  .form-actions
-    - if can? :create, @article
-      = f.input :published
-    = f.button :submit
+    .form-actions
+      .row
+        .col-md-12
+          = f.button :submit
