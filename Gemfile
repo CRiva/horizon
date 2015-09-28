@@ -30,6 +30,7 @@ group :test do
   gem 'database_cleaner'
   gem 'poltergeist' # Requires PhantomJS on the host machine - MN
   gem 'pry-byebug'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do

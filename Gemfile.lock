@@ -65,6 +65,8 @@ GEM
     cliver (0.3.2)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
+    codeclimate-test-reporter (0.4.6)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     columnize (0.9.0)
     daemons (1.2.3)
@@ -82,6 +84,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
@@ -214,6 +217,11 @@ GEM
     simple_form (3.1.1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     sprockets (3.3.4)
       rack (~> 1.0)
@@ -254,6 +262,7 @@ DEPENDENCIES
   bootstrap-sass
   cancan
   capybara
+  codeclimate-test-reporter
   database_cleaner
   delayed_job_active_record
   devise
