@@ -26,13 +26,20 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'poltergeist' # Requires PhantomJS on the host machine - MN
   gem 'pry-byebug'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do
   gem 'better_errors'
   gem 'html2haml'
-  gem 'hub', :require=>nil
+  gem 'hub', require: nil
   gem 'quiet_assets'
+end
+
+group :test, :development do
+  gem 'pry'
 end

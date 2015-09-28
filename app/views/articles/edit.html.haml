@@ -1,7 +1,10 @@
+- @skip_side = true
 %h1 Editing article
 
 = render 'form'
-
-= link_to 'Show', @article
-\|
-= link_to 'Back', articles_path
+.row
+  .col-md-12
+    .pull-right
+      = link_to 'Show', @article
+      \|
+      = link_to 'Back', articles_path

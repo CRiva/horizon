@@ -29,10 +29,10 @@ class CommentsController < ApplicationController
     @comment.name = current_user.name
     respond_to do |format|
       if @comment.save
-        format.html {redirect_to(@article, notice: 'Comment was successfully created.')}
-        format.xml {render xml: @article, status: :created, location: @article }
+        format.html { redirect_to(@article, notice: 'Comment was successfully created.') }
+        format.xml { render xml: @article, status: :created, location: @article }
       else
-        format.html { redirect_to(@article, notice: 'Comment could not be saved. Try again.')}
+        format.html { redirect_to(@article, notice: 'Comment could not be saved. Try again.') }
         format.xml { render xml: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
         format.xml { head :ok }
       else
         format.html { render action: 'edit' }
-        format.xml { render xml: @comment.errors, status: :upprocessable_entity}
+        format.xml { render xml: @comment.errors, status: :upprocessable_entity }
       end
     end
   end
@@ -62,18 +62,16 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@article, notice: 'Comment was successfully deleted.')}
+      format.html { redirect_to(@article, notice: 'Comment was successfully deleted.') }
       format.xml { head :ok }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:article_id, :body)
     end

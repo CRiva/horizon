@@ -34,6 +34,5 @@ class Ability
     elsif user.role? :Creative # ID = 6 can edit and update articles
       can [:edit, :update], [Article]
     end
-
   end
 end
