@@ -102,10 +102,10 @@ RSpec.describe ArticlesController do
 
       params = attributes_for(:article)
       post :create, article: params
-      non_assigned = assigns(:article)
-                 .attributes
-                 .except(*attributes_for(:article).stringify_keys.keys)
-                 .except("created_at", "updated_at")
+      non_assigned = assigns(:article).
+                       attributes.
+                       except(*attributes_for(:article).stringify_keys.keys).
+                       except("created_at", "updated_at")
       expect(non_assigned).to eq(defaults)
     end
   end
