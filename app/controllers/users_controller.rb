@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update # TODO shorten this.
     @user.name = params[:user][:name]
-    @user.role_ids = params[:user][:role_ids]
+    @user.role_ids = allowed_roles(params[:user][:role_ids])
     @user.page = params[:user][:page]
     @user.avatar = params[:user][:avatar]
     if @user.role_ids == []
@@ -67,5 +67,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :role_ids, :page, :avatar) # try user:{:role_ids} when everyting else is working.
+  end
+
+  def allowed_roles(role_ids)
+    role_ids.select { |role_id| ['1', '2', '4'].include?(role_id)} if role_ids
   end
 end
