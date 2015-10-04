@@ -269,6 +269,3 @@ DEPENDENCIES
   thin
   uglifier
   yaml_db
-
-BUNDLED WITH
-   1.10.6
