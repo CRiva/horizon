@@ -9,7 +9,7 @@ describe Article do
   end
 
   describe 'with valid article' do
-    let (:article) {
+    let(:article) {
       Article.new({
                     title: 'Monkey',
                     body: 'Chicken',
@@ -19,7 +19,7 @@ describe Article do
     }
 
     it 'should set defaults' do
-      expect(article.published).to be_falsey
+      expect(article.published).to be_truthy
       expect(article.impressions_count).to eq(0)
     end
   end
