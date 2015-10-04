@@ -4,7 +4,7 @@ class SignInTest < PoltergeistIntegrationTest
 
   describe 'user' do
     it 'can login' do
-      puts "Hello, world!"
+      puts 'Hello, world!'
     end
   end
 end

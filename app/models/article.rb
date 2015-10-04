@@ -7,24 +7,24 @@ class Article < ActiveRecord::Base
   is_impressionable :counter_cache => true, :column_name => :impressions_count
 
   scope :published, -> { where(published: true) }
-
+  scope :on, ->(page_id) { where(page: page_id) }
   validates :page, :title, :body, :author_name, presence: true
   validates :title, uniqueness: true
 
   has_attached_file :pdf, styles: {
-                      thumb: ["100x100#", :jpg],
-                      medium: ["300x300#", :jpg],
-                      large: ["500x500#", :jpg]
+                      thumb: ['100x100#', :jpg],
+                      medium: ['300x300#', :jpg],
+                      large: ['500x500#', :jpg]
                     }
 
   validates_attachment :pdf, content_type: {
-                         content_type: "application/pdf"
+                         content_type: 'application/pdf'
                        }
 
   has_attached_file :photo, styles: {
-                      large: "500x500>",
-                      medium: "300x300#",
-                      thumb: "100x100#"
+                      large: '500x500>',
+                      medium: '300x300#',
+                      thumb: '100x100#'
                     }
 
   validates_attachment_content_type :photo, content_type:
@@ -33,13 +33,8 @@ class Article < ActiveRecord::Base
                                                'image/gif']
 
   def self.search(search)
-    if search
-      q = "%#{search}%"
-      published.where("author_name LIKE ? OR title LIKE ?", q, q)
-    else
-      published
-    end
-
+    q = "%#{search}%"
+    published.where("author_name LIKE ? OR title LIKE ?", q, q)
   end
 
   def page_name

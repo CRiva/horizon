@@ -1,3 +1,4 @@
+# Controller responsible for getting and setting things about users
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -8,7 +9,9 @@ class UsersController < ApplicationController
   def show
     # load the unpublished article for a particular page.
     @unpub_articles = Article.where(page: current_user.page, published: false)
-    @new_articles = Article.where(aasm_state: 'new', published: false).order("articles.page ASC")
+    @new_articles = Article
+                      .where(aasm_state: 'new', published: false)
+                      .order('articles.page ASC')
     @my_articles  = Article.where(author_id: current_user)
     @my_comments = Comment.where(name: current_user.name)
     # @pub_articles = Article.where(page: current_user.page, published: true)
@@ -24,7 +27,7 @@ class UsersController < ApplicationController
     @user.name = params[:user][:name]
     @user.role_ids = params[:user][:role_ids]
     @user.page = params[:user][:page]
-    @user.avatar = params[:user][:avatar] # removed until implemented with strong params
+    @user.avatar = params[:user][:avatar]
     if @user.role_ids == []
       @user.role_ids = [3] # to default to member if no id
     end
@@ -48,14 +51,16 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "user was successfully deleted."}
+      format.html {
+        redirect_to users_url,
+                    notice: 'user was successfully deleted.'
+      }
       format.json { head :no_content }
     end
   end
 
-
   private
-  # share some functionality
+
   def set_user
     @user = User.find(params[:id])
   end

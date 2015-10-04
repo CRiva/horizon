@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402051232) do
+ActiveRecord::Schema.define(version: 20150927205234) do
 
   create_table "artices_pages", id: false, force: :cascade do |t|
     t.integer "page_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140402051232) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "published",          default: false
+    t.boolean  "published",          default: true
     t.integer  "page"
     t.integer  "author_id"
     t.datetime "due_date"

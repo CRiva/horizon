@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :pages
+
   has_attached_file :avatar,
                     styles: {
                       medium: "300x300>",
@@ -23,7 +24,7 @@ class User < ActiveRecord::Base
   def self.make_all_members
     all.each do |user|
       unless user.role_ids.include?(1)
-        user.role_ids = [3]
+        user.role_ids = [Role.find_by_name('Member').id]
         user.save!
       end
     end
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
     if self.page
       Page.find(self.page).name
     else
-      return ""
+      ''
     end
   end
 

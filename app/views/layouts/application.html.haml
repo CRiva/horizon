@@ -22,7 +22,7 @@
           .col-md-9
             = yield
           .col-md-3
-            = render 'layouts/side'
+            = render 'layouts/side' unless @skip_side
     %footer
       = render 'layouts/footer'
 
@@ -60,16 +60,3 @@
         .modal-footer
           %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
           = f.button :submit, "Sign In", class: 'btn btn-primary'
-
-
-
-
-
-
-
-
-
-
-
-
-

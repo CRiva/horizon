@@ -4,5 +4,4 @@ class VisitorsController < ApplicationController
     # just load articles for the home page.
     @articles = Article.published.order('created_at DESC').page(params[:page]).per(15)
   end
-
 end

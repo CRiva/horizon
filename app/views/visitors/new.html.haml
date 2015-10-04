@@ -2,4 +2,5 @@
   .row
     - row.each do |article|
       - if article
-        = render 'articles/thumb_article', article: article
+        %a{ href: article_path(article) }
+          = render 'articles/thumb_article', article: article
