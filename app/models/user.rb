@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
                       icon: "50X50#"
                     },
                     default_url: "blank_profile.png"
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   
   validates :name, uniqueness: true
-
   before_create :setup_role
 
   devise :database_authenticatable,

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 RSpec.describe User do
   it 'validates the name is unique' do
-    create(:user)
-    expect(build(:user)).to be_invalid
+    create(:user, name: 'joe')
+    expect(build(:user, name: 'joe')).to be_invalid
   end
 
   it 'will default the role to [3] if none is provided' do
