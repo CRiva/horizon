@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'sassc-rails'
 gem 'rails'
-gem 'sqlite3'
+gem 'sqlite3', '~>1.3.0'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'bootstrap-sass'

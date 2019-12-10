@@ -2,7 +2,7 @@
   .container-fluid
     .navbar-header
       %a{href: root_path, ondragstart: "return false"}
-        = image_tag asset_path("subh.png")
+        = image_tag asset_path("logo.png"), alt: 'logo'
       %button.navbar-toggle{"data-target" => "#navPage", "data-toggle" => "collapse", type: "button", :style => 'margin-top:22px;'}
         %span.sr-only Toggle navigation
         %span.icon-bar
@@ -22,8 +22,3 @@
           %li.navbar-brand
             %a{href: "#", "data-target" => "#signUp", "data-toggle" => "modal"} Sign Up
 
-
-:javascript
-$("img").mousedown(function(){
-    return false;
-});

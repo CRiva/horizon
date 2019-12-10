@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927205234) do
+ActiveRecord::Schema.define(version: 20191210234817) do
 
   create_table "artices_pages", id: false, force: :cascade do |t|
     t.integer "page_id"
@@ -25,18 +25,18 @@ ActiveRecord::Schema.define(version: 20150927205234) do
     t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
-    t.integer  "photo_file_size"
+    t.integer  "photo_file_size",    limit: 8
     t.datetime "photo_updated_at"
-    t.boolean  "published",          default: true
+    t.boolean  "published",                    default: true
     t.integer  "page"
     t.integer  "author_id"
     t.datetime "due_date"
-    t.string   "aasm_state",         default: "new"
+    t.string   "aasm_state",                   default: "new"
     t.string   "author_name"
-    t.integer  "impressions_count",  default: 0
+    t.integer  "impressions_count",            default: 0
     t.string   "pdf_file_name"
     t.string   "pdf_content_type"
-    t.integer  "pdf_file_size"
+    t.integer  "pdf_file_size",      limit: 8
     t.datetime "pdf_updated_at"
   end
 
@@ -62,12 +62,14 @@ ActiveRecord::Schema.define(version: 20150927205234) do
     t.text     "referrer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "params"
   end
 
   add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
   add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
   add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
@@ -96,12 +98,12 @@ ActiveRecord::Schema.define(version: 20150927205234) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                            default: "", null: false
+    t.string   "encrypted_password",               default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                    default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -112,7 +114,7 @@ ActiveRecord::Schema.define(version: 20150927205234) do
     t.integer  "page"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
+    t.integer  "avatar_file_size",       limit: 8
     t.datetime "avatar_updated_at"
   end
 
